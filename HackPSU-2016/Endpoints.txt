@@ -8,8 +8,6 @@
 	get
 /Group/view/<group_id>
 	get
-/Profile/view/<id>
-	get
 /Group/view/<id>
 	get
 /Profile/game-suggestions/<text>
@@ -18,6 +16,8 @@
 	get
 /Profile/edit
 	post
+/Profile/view/<id>
+	get
 /Notifications/get
 	get
 /Notification/follow/<id>

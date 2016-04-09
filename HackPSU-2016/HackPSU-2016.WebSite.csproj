@@ -242,6 +242,7 @@
     <Content Include="Content\images\foundation\orbit\right-arrow.png" />
     <Content Include="Content\images\foundation\orbit\rotator-black.png" />
     <Content Include="Content\images\foundation\orbit\timer-black.png" />
+    <Content Include="Content\images\HackPSUFinal01.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Foundation_readme.txt" />
@@ -281,7 +282,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="Credits.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

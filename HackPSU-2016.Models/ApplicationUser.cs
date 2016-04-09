@@ -53,7 +53,7 @@ namespace HackPSU_2016.Models
         public Playstyle Playstyle { get; set; }
         public CommunicationsPlatform CommunicationsPlatform { get; set; }
 
-        public DateTime AvailableFrom { get; set; }
-        public DateTime AvailableTill { get; set; }
+        public DateTime? AvailableFrom { get; set; }
+        public DateTime? AvailableTill { get; set; }
     }
 }

@@ -1,8 +1,13 @@
-/* Foundation was made by ZURB, an interaction design and design strategy firm in Campbell, CA */
-/* zurb.com */
 /* humanstxt.org */
+                  
+/* TEAM */      
+Your title: Joss Steward
+Site: https://josssteward.com
+Twitter: @JossSteward                            
+Location: Chambersburg, Pennsylvania
 
 /* SITE */
-  Standards: HTML5, CSS3
-  Components: jQuery, Orbit, Reveal
-  Software: Coda, Textmate, Git
+Standards: HTML5, CSS3
+Components: jQuery, Orbit, Reveal
+Software: Coda, Textmate, Git
+

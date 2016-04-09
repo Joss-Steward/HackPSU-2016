@@ -243,6 +243,7 @@
     <Content Include="Content\images\foundation\orbit\rotator-black.png" />
     <Content Include="Content\images\foundation\orbit\timer-black.png" />
     <Content Include="Content\images\HackPSUFinal01.png" />
+    <Content Include="Endpoints.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Foundation_readme.txt" />

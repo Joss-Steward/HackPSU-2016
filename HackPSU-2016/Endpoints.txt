@@ -1,0 +1,22 @@
+﻿/Group/approve
+	post
+/Group/reject
+	post
+/Chat/message
+	post
+/Group/get-suggestions
+	post
+/Group/get
+	post
+/Profile/view?id=xxxx
+	get
+/Group/view?id=xxxx
+	get
+/Profile/game-suggestions
+	post
+/Profile/edit
+	post
+/Notifications/get
+	post
+/Notifications/dismiss
+	post

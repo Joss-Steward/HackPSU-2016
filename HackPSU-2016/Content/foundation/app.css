@@ -12,13 +12,183 @@
 /* -----------------------------------------
    Shared Styles
 ----------------------------------------- */
+body .row
+,body .row .row
+,body .columns
+,body ul
+,body ul ul{
+    margin: 0;
+    padding: 0;
+    line-height: 1.2em;
+}
+
+body{
+    background: rgba(183, 183, 182, 1);
+}
+
+.Icon{
+    font-family: FontAwesome;
+    display: inline-block;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.Icon.Bell:before{
+    content: "\f0f3";
+}
+
+.Icon.Gear:before{
+    content: "\f013";
+}
+
+.Icon.LeftArrow:before{
+    content: "\f053";
+}
+
+.Icon.RightArrow:before{
+    content: "\f054";
+}
+
+.MainSiteRow
+,.MainSiteColumn{
+    width: 100%;
+    max-width: 100%;
+}
+
+.MainSiteRow .MainSiteColumn .SiteHeader{
+    position: fixed;
+    width: 100%;
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(20, 19, 17, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 20px;
+    z-index: 100;
+}
+
+.MainSiteRow .MainSiteColumn .SiteHeader *{
+    font-size: 18px;
+}
+
+.MainSiteRow .MainSiteColumn .LeftPageGutter
+,.MainSiteRow .MainSiteColumn .RightPageGutter{
+    /*background: rgba(183, 183, 182, 1);*/
+}
 
 
+.MainSiteRow .MainSiteColumn .SiteContentContain{
+    
+}
+
+.MainSiteColumn .SiteContentContain .SiteContent{
+    padding: 50px 10px 10px 10px;
+    background: rgba(104, 103, 102, 1);
+}
+
+.MainSiteColumn .SiteHeader > div:not(.UserInfo){
+    padding: 15px 10px;
+}
+
+.SiteHeader .UserInfo{
+    padding: 0px 20px;
+}
+
+.SiteHeader .UserInfo > ul{
+    list-style: none;
+    float: right;
+}
+
+.SiteHeader .UserInfo ul li{
+    position: relative;
+    float: left;
+}
+
+.SiteHeader .UserInfo > ul > li:not(:first-child){
+    -webkit-box-shadow: -12px 1px 0 -11px rgba(255, 255, 255, .4);
+    -moz-box-shadow: -12px 1px 0 -11px rgba(255, 255, 255, .4);
+    box-shadow: -12px 1px 0 -11px rgba(255, 255, 255, .4);
+}
+
+.SiteHeader .UserInfo > ul li a{
+    display: inline-block;
+    padding: 15px 10px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.SiteHeader .UserInfo > ul ul{
+    list-style: none;
+    display: none;
+    position: absolute;
+    width: auto;
+    top: 100%;
+    right: 0;
+    background: rgba(127, 127, 127, 1);
+}
+
+.SiteHeader .UserInfo ul ul > li{
+    width: 100%;
+    float: left;
+}
+
+.SiteHeader .UserInfo ul ul > li a{
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    white-space: nowrap;
+}
+
+.SiteHeader .UserInfo ul ul > li:not(:last-child) a{
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+}
+
+.ShowHeaderNotifications .SiteHeader .UserInfo ul ul{
+    display: block;
+}
 
 /* -----------------------------------------
-   Page Name 1
+   Home -> Index
 ----------------------------------------- */
+.SiteContentContain .SiteContent .HomePageUserScroller{
+    position: relative;
+    padding: 10px 30px;
+}
 
+.HomePageUserScroller .NavArrows{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 25px;
+    height: 30px;
+}
+
+.HomePageUserScroller .NavArrows.Left{
+    left: 0;
+}
+
+.HomePageUserScroller .NavArrows.Right{
+    right: 0;
+}
+
+.HomePageUserScroller .NavArrows .Icon{
+    display: block;
+    font-size: 35px;
+}
+
+.HomePageUserScroller .UserPanelContain{
+    width: 20%;
+    float: left;
+    padding: 0px 10px;
+}
+
+.HomePageUserScroller .UserPanelContain .UserPanel{
+    height: 100px;
+    padding: 5px;
+    background: rgba(255, 255, 255, .3);
+}
 
 
 

@@ -5,8 +5,10 @@ namespace HackPSU_2016.Migrations
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Data.Entity.Validation;
+    using System.Diagnostics;
     using System.Linq;
-
+    using System.Text;
     internal sealed class Configuration : DbMigrationsConfiguration<HackPSU_2016.Models.ApplicationDbContext>
     {
         public Configuration()
@@ -29,7 +31,7 @@ namespace HackPSU_2016.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
+            
             var AOE = new Game { Name = "Age of Empires II" };
             var BF2 = new Game { Name = "StarWars BattleFront II" };
             var WET = new Game { Name = "Wolfenstein Enemy Territory" };
@@ -50,7 +52,7 @@ namespace HackPSU_2016.Migrations
                 );
 
             context.SaveChanges();
-
+                
             var passwordHash = new PasswordHasher();
             string password = passwordHash.HashPassword("Password@123");
 
@@ -80,13 +82,14 @@ namespace HackPSU_2016.Migrations
 
             context.Users.AddOrUpdate(
                 u => u.Email,
-                jared, 
-                ian, 
+                jared,
+                ian,
                 joss
                 );
 
             context.SaveChanges();
 
+                
             var saucy = new Group
             {
                 Name = "SaucyTomato"
@@ -98,26 +101,78 @@ namespace HackPSU_2016.Migrations
 
             context.SaveChanges();
 
-            context.UsersToGroups.AddOrUpdate(
-                ug => ug.UsersToGroupsId,
-                new UsersToGroups
+            var j1 = context.Users.Where(u => u.UserName == "redja")
+                .SingleOrDefault();
+            if (j1 != null)
+            {
+                var rel = new UsersToGroups
                 {
-                    User = jared,
-                    Group = saucy
-                },
+                    User = j1,
+                    Group = saucy,
+                    DateApproved = DateTime.Now
+                };
+
+                context.UsersToGroups.Add(rel); // will also add comment3
+                SaveChanges(context);
+            }
+
+            /*
+            var groupRelation = new UsersToGroups
+            {
+                User = context.Users.Single(u => u.UserName == jared.UserName),
+                Group = context.Groups.Single(g => g.Name == saucy.Name),
+                DateApproved = null
+            };
+
+            context.UsersToGroups.Add(groupRelation);
+            saucy.Members.Add(groupRelation);
+            jared.Groups.Add(groupRelation);
+
+            /*
+            context.UsersToGroups.Add(
                 new UsersToGroups
                 {
                     User = ian,
-                    Group = saucy
-                },
+                    Group = saucy,
+                    DateApproved = null
+                });
+            context.UsersToGroups.Add(
                 new UsersToGroups
                 {
                     User = joss,
-                    Group = saucy
+                    Group = saucy,
+                    DateApproved = null
                 });
+            */
 
-            context.SaveChanges();
+            SaveChanges(context);
+        }
 
+        private void SaveChanges(DbContext context)
+        {
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                foreach (var failure in ex.EntityValidationErrors)
+                {
+                    sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                    foreach (var error in failure.ValidationErrors)
+                    {
+                        sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                        sb.AppendLine();
+                    }
+                }
+
+                throw new DbEntityValidationException(
+                    "Entity Validation Failed - errors follow:\n" +
+                    sb.ToString(), ex
+                ); // Add the original exception as the innerException
+            }
         }
     }
 }

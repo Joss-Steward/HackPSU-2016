@@ -18,6 +18,6 @@ namespace HackPSU_2016.Models
         [Key, Column(Order = 1)]
         public virtual Group Group { get; set; }
 
-        public DateTime DateApproved { get; set; }
+        public DateTime? DateApproved { get; set; }
     }
 }

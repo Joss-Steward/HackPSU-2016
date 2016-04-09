@@ -26,6 +26,18 @@ namespace HackPSU_2016
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            #region Foundation Bundles
+      bundles.Add(new StyleBundle("~/Content/foundation/css").Include(
+                 "~/Content/foundation/foundation.css",
+                 "~/Content/foundation/foundation.mvc.css",
+                 "~/Content/foundation/app.css",
+                 "~/Content/Font.css"));
+
+      bundles.Add(new ScriptBundle("~/bundles/foundation").Include(
+                "~/Scripts/foundation/jquery.*",
+                "~/Scripts/foundation/app.js"));
+      #endregion
         }
     }
 }

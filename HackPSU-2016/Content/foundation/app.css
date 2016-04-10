@@ -16,7 +16,10 @@ body .row
 ,body .row .row
 ,body .columns
 ,body ul
-,body ul ul{
+,body ul ul
+,body form
+,body .MainSiteRow .MainSiteColumn input
+,body .MainSiteRow .MainSiteColumn select{
     margin: 0;
     padding: 0;
     line-height: 1.2em;
@@ -32,7 +35,6 @@ body{
     font-size: inherit;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .Icon.Bell:before{
@@ -84,11 +86,12 @@ body{
 }
 
 .MainSiteColumn .SiteContentContain .SiteContent{
-    padding: 50px 10px 10px 10px;
+    padding: 100px 10px 10px 10px;
     background: rgba(104, 103, 102, 1);
 }
 
-.MainSiteColumn .SiteHeader > div:not(.UserInfo){
+.MainSiteColumn .SiteHeader div.SiteName
+,.MainSiteColumn .SiteHeader div.MatchesGroups{
     padding: 15px 10px;
 }
 
@@ -96,29 +99,39 @@ body{
     padding: 0px 20px;
 }
 
-.SiteHeader .UserInfo > ul{
+/*.SiteHeader .UserInfo > ul{*/
+.SiteHeader ul{
     list-style: none;
     float: right;
 }
 
-.SiteHeader .UserInfo ul li{
+/*.SiteHeader .UserInfo ul li{*/
+.SiteHeader ul li{
     position: relative;
     float: left;
 }
 
-.SiteHeader .UserInfo > ul > li:not(:first-child){
+/*.SiteHeader .UserInfo > ul > li:not(:first-child){*/
+.SiteHeader > div > ul > li:not(:first-child){
     -webkit-box-shadow: -12px 1px 0 -11px rgba(255, 255, 255, .4);
     -moz-box-shadow: -12px 1px 0 -11px rgba(255, 255, 255, .4);
     box-shadow: -12px 1px 0 -11px rgba(255, 255, 255, .4);
 }
 
-.SiteHeader .UserInfo > ul li a{
+/*.SiteHeader .UserInfo > ul li a{*/
+.SiteHeader ul > li > a{
     display: inline-block;
     padding: 15px 10px;
     color: rgba(255, 255, 255, 1);
 }
 
-.SiteHeader .UserInfo > ul ul{
+.ShowHeaderNotifications .SiteHeader #NotificationsButton
+,.ShowHeaderLogin .SiteHeader #LoginButton{
+    background: rgba(162, 72, 46, 1);
+}
+
+/*.SiteHeader .UserInfo > ul ul{*/
+.SiteHeader ul ul{
     list-style: none;
     display: none;
     position: absolute;
@@ -128,12 +141,15 @@ body{
     background: rgba(127, 127, 127, 1);
 }
 
-.SiteHeader .UserInfo ul ul > li{
+/*.SiteHeader .UserInfo ul ul > li{*/
+.SiteHeader ul ul > li{
     width: 100%;
     float: left;
 }
 
-.SiteHeader .UserInfo ul ul > li a{
+/*.SiteHeader .UserInfo ul ul > li a{*/
+.SiteHeader ul ul > li > a
+,.SiteHeader ul ul > li > div{
     display: block;
     width: 100%;
     padding: 10px 15px;
@@ -144,16 +160,35 @@ body{
     border-bottom: 1px solid rgba(255, 255, 255, .3);
 }
 
-.ShowHeaderNotifications .SiteHeader .UserInfo ul ul{
+.ShowHeaderNotifications .SiteHeader .UserInfo ul ul
+,.ShowHeaderLogin .SiteHeader .UserLogin ul ul{
     display: block;
+}
+
+.SiteHeader .UserLogin ul li input:not([type="checkbox"]){
+    width: 250px;
+}
+
+.SiteHeader .UserLogin ul li label{
+    display: inline-block;
+    color: rgba(255, 255, 255, 1);
+}
+
+.SiteHeader .UserLogin ul li span.field-validation-error{
+    display: none;
 }
 
 /* -----------------------------------------
    Home -> Index
 ----------------------------------------- */
 .SiteContentContain .SiteContent .HomePageUserScroller{
+    width: 100%;
+    display: inline-block;
     position: relative;
-    padding: 10px 30px;
+    padding: 0px 30px;
+    margin: 20px 0px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .HomePageUserScroller .NavArrows{
@@ -180,7 +215,7 @@ body{
 
 .HomePageUserScroller .UserPanelContain{
     width: 20%;
-    float: left;
+    display: inline-block;
     padding: 0px 10px;
 }
 
@@ -193,7 +228,93 @@ body{
 
 
 /* -----------------------------------------
-   Page Name 2
+   Group -> Index
 ----------------------------------------- */
 
+.SiteContent .GroupLogo > div{
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 50%;
+}
 
+.SiteContent .GroupLogo > div:after{
+    content: "\f007";
+    font-family: FontAwesome;
+    font-size: 150px;
+    position: absolute;
+    bottom: 60px;
+    left: 40px;
+}
+
+.SiteContent .GroupInfo .GroupName{
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.SiteContent .GroupInfo .GroupDescription{
+    padding: 0px 10px;
+}
+
+.SiteContent .GroupData{
+}
+
+.GroupData .PlayerChat
+,.GroupData .PlayerChat .ChatInputContain{
+    height: 400px;
+}
+
+.GroupData .PlayerChat{
+    position: relative;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.GroupData .PlayerChat .ChatInputContain{
+    width: 98%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.GroupData .PlayerChat .ChatContain{ 
+    height: 390px;
+    position: relative;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.GroupData .PlayerChat .ChatContain > div:last-child{
+    padding: 0px 0px 50px 0px;
+}
+
+.SiteContent .GroupData .PlayerList{
+    height: 400px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.SiteContent .GroupData .PlayerList > div{
+    margin: 15px 0px;
+}
+
+.SiteContent .GroupData .PlayerList span{
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    position: relative;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 50%;
+}
+
+.SiteContent .GroupData .PlayerList span:after{
+    content: "\f007";
+    font-family: FontAwesome;
+    font-size: 40px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}

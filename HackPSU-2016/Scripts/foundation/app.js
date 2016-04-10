@@ -68,10 +68,33 @@ function NotificationsToggle(){
 }
 
 
+function LoginToggle(){
+    var bodyElement = document.getElementById("Body");
+    var className = "ShowHeaderLogin";
+    if (HasClass(bodyElement, className)){
+        RemoveClass(bodyElement, className);
+    }else{
+        AddClass(bodyElement, className);
+    }
+}
+
 
 (function Load(){
-    var notificationsButton = document.getElementById("NotificationsButton");
-    notificationsButton.addEventListener("click", NotificationsToggle, false);
+    try {
+        console.log("Notif");
+        var notificationsButton = document.getElementById("NotificationsButton");
+        notificationsButton.addEventListener("click", NotificationsToggle, false);
+    } catch (error) {
+        console.log("notificationsButton failed");
+    }
+
+    try {
+        console.log("Login");
+        var loginButton = document.getElementById("LoginButton");
+        loginButton.addEventListener("click", LoginToggle, false);
+    } catch (error) {
+        console.log("loginButton failed");
+    }
 })();
 
 

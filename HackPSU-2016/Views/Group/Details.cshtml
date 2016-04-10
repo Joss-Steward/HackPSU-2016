@@ -71,6 +71,7 @@
             if($('#message').val()) {
                 $.connection.hub.start().done(function(){
                     chat.server.sendChatMessage(@Model.GroupId, $('#message').val());
+                    console.log($('#message').val());
                     $('#message').val('').focus();
                     return;
                 });

@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using HackPSU_2016.Models;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 namespace HackPSU_2016.Controllers
 {
@@ -17,6 +19,7 @@ namespace HackPSU_2016.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -176,7 +179,46 @@ namespace HackPSU_2016.Controllers
                        "Please confirm your account by clicking this link: <a href=\""
                                                        + callbackUrl + "\">link</a>");
                     // ViewBag.Link = callbackUrl;   // Used only for initial demo.
-                    return View("Login");
+                    db.SaveChanges();
+
+                    try
+                    {
+                        // Your code...
+                        // Could also be before try if you know the exception occurs in SaveChanges
+
+                        var group = db.Groups.FirstOrDefault();
+                        var u = db.Users.Where(un => un.UserName == user.UserName)
+                            .SingleOrDefault();
+
+                        if (group != null && u != null)
+                        {
+                            UsersToGroups groupRelation = new UsersToGroups
+                            {
+                                User = u,
+                                Group = group,
+                                DateApproved = DateTime.Now
+                            };
+
+                            db.UsersToGroups.Add(groupRelation);
+                            db.SaveChanges();
+                        }
+                   
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+                        foreach (var eve in e.EntityValidationErrors)
+                        {
+                            Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                                eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                            foreach (var ve in eve.ValidationErrors)
+                            {
+                                Debug.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                    ve.PropertyName, ve.ErrorMessage);
+                            }
+                        }
+                        throw;
+                    }
+                    return View();
                 }
                 AddErrors(result);
             }

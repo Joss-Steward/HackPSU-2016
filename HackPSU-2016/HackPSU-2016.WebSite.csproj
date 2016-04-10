@@ -206,6 +206,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -267,6 +268,10 @@
     <Content Include="Content\foundation\app.css" />
     <Content Include="Content\foundation\foundation.css" />
     <Content Include="Content\foundation\foundation.mvc.css" />
+    <Content Include="Content\images\congruent_outline.png" />
+    <Content Include="Content\images\escheresque_ste.png" />
+    <Content Include="Content\images\escheresque_ste_%402X.png" />
+    <Content Include="Content\images\footer_lodyas.png" />
     <Content Include="Content\images\HackPSULogo.png" />
     <Content Include="Content\images\foundation\orbit\bullets.jpg" />
     <Content Include="Content\images\foundation\orbit\left-arrow-small.png" />
@@ -280,6 +285,10 @@
     <Content Include="Content\images\foundation\orbit\timer-black.png" />
     <Content Include="Content\images\HackPSUFinal.png" />
     <Content Include="Content\images\HackPSUFinal01.png" />
+    <Content Include="Content\images\stardust.png" />
+    <Content Include="Content\images\stardust_%402X.png" />
+    <Content Include="Content\images\tweed.png" />
+    <Content Include="Content\images\tweed_%402X.png" />
     <Content Include="Endpoints.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

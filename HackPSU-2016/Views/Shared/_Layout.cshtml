@@ -31,17 +31,17 @@
                 <div class="four columns SiteName">
                     <a href="@Url.Action("Index","Home")">
                         <img src="@Url.Content("~/Content/images/HackPSULogo.png")" />
-                        Party Up
+                        Party Up!
                     </a>
                 </div>
-                <div class="four columns MatchesGroups">
+                @*<div class="four columns MatchesGroups">
                     <a href="">
                         Matches
                     </a>
                     <a href="">
                         Groups
                     </a>
-                </div>
+                </div>*@
                 <div class="four columns UserControls">
                     @{if(!Request.IsAuthenticated){
                             <a href="@Url.Action("Login","Account")">
@@ -55,16 +55,14 @@
                             <ul>
                                 <li>
                                     <a class="UserName" id="UserInfoButton">
-                                        @{
-                                            string userName = User.Identity.Name;
-                                            if(string.IsNullOrEmpty(userName)) {
-                                                <text>null</text>
-                                            } else {
-                                                @userName
-                                            }
-                                        }
+                                        @User.Identity.Name
                                     </a>
                                     <ul class="UserInfo">
+                                        <li>
+                                            <a class="UserName" id="UserInfoButton" href="/Profile/Details/@User.Identity.Name">
+                                                Edit Profile
+                                            </a>
+                                        </li>
                                         <li>
                                             @using(Html.BeginForm("LogOff","Account",FormMethod.Post,new { id = "logoutForm",@class = "navbar-right" })) {
                                                 @Html.AntiForgeryToken()

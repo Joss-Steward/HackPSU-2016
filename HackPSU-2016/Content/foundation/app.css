@@ -25,8 +25,24 @@ body .row
     line-height: 1.2em;
 }
 
+body *{
+    font-family: 'Quicksand', sans-serif;
+}
+
+body a
+,a:link
+,a:visited{
+    color: #C34012;
+    /*font-weight: bold;*/
+}
+
 body{
-    background: rgb(29,29,29);
+    /*background: rgb(29,29,29);*/
+    /*background: url("/Content/images/stardust.png");*/
+}
+
+.MainSiteRow .MainSiteColumn *{
+    font-size: 18px;
 }
 
 .Icon{
@@ -57,6 +73,14 @@ body{
     content: "\f054";
 }
 
+.Icon.Chat:before{
+    content: "\f075";
+}
+
+.Icon.Users:before{
+    content: "\f0c0";
+}
+
 .MainSiteRow
 ,.MainSiteColumn{
     width: 100%;
@@ -71,7 +95,9 @@ body{
     left: 0;
     background: #BE3100;
     background: linear-gradient(0deg, #BE3100, #CB5A32);
-    box-shadow: 0px 3px 3px #CB5A32;
+    /*box-shadow: 0px 3px 3px #CB5A32;*/
+    /*box-shadow: 0px 3px 3px rgba(182, 190, 255, 1);*/
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 1);
     z-index: 100;
 }
 
@@ -85,7 +111,7 @@ body{
 
 .MainSiteRow .MainSiteColumn .SiteHeader .SiteName a{
     display: block;
-    padding: 15px 10px 10px 100px;
+    padding: 16px 10px 10px 100px;
     text-shadow: 0px 3px #1D1D1D, -1px 0px #1D1D1D, 1px 0px #1D1D1D;
 }
 
@@ -108,6 +134,21 @@ body{
     text-align: right;
 }
 
+.MainSiteColumn .SiteHeader .UserControls a{
+    position: relative;
+    z-index: 4;
+}
+
+.MainSiteColumn .SiteHeader .UserControls a:not(:last-child):after{
+    position: absolute;
+    top: 15px;
+    right: 0px;
+    content: "";
+    width: 1px;
+    height: 30px;
+    border-left: 1px solid rgba(255, 255, 255, .5);
+}
+
 .MainSiteRow .MainSiteColumn .LeftPageGutter
 ,.MainSiteRow .MainSiteColumn .RightPageGutter{
     /*background: rgba(53, 50, 45, 1);*/
@@ -120,7 +161,8 @@ body{
 
 .MainSiteColumn .SiteContentContain .SiteContent{
     padding: 100px 10px 10px 10px;
-    background: rgb(29,29,29);
+    /*background: rgb(29,29,29);*/
+    background: none;
 }
 
 /*.MainSiteColumn .SiteHeader div.SiteName
@@ -129,7 +171,7 @@ body{
 }*/
 
 .SiteHeader .UserInfo{
-    padding: 0px 20px;
+    /*padding: 0px 20px;*/
 }
 
 /*.SiteHeader .UserInfo > ul{*/
@@ -174,7 +216,9 @@ body{
     display: none;
     position: absolute;
     width: auto;
-    top: 110%;
+    min-width: 100%;
+    padding: 0px;
+    top: 106%;
     right: 0;
     background: rgba(162, 72, 46, 1);
     /*box-shadow: 4px 1px 3px #c75b3c, -4px 1px 3px #c75b3c, 0px 4px 3px #c75b3c;*/
@@ -193,6 +237,10 @@ body{
     width: 100%;
     padding: 10px 15px;
     white-space: nowrap;
+}
+
+.SiteHeader ul ul > li > a:hover{
+    background: linear-gradient(0deg, #CB5A32, #BE3100);
 }
 
 .SiteHeader .UserInfo ul ul > li:not(:last-child) a{
@@ -220,6 +268,23 @@ body{
 
 .ErrorMessage{
     color: rgba(255, 0, 0, 1);
+}
+
+.MainSiteRow .MainSiteColumn .SiteContentContain .SiteContent h2{ 
+    font-size: 40px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 1);
+}
+
+
+.SiteContentContain .SiteContent button{
+    display: inline-block;
+    width: auto;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-size: 18px;
+    border: none;
+    background: #E5E5E5;
 }
 
 /* -----------------------------------------
@@ -308,6 +373,12 @@ body{
 .SiteContent .GroupData{
 }
 
+.GroupSectionHeaders .Icon{
+    padding-right: 10px;
+    font-size: 35px;
+
+}
+
 .GroupData .PlayerChat
 ,.GroupData .PlayerChat .ChatInputContain{
     height: 400px;
@@ -315,28 +386,46 @@ body{
 
 .GroupData .PlayerChat{
     position: relative;
-    padding: 10px;
+    /*padding: 10px;*/
     overflow: hidden;
+    border: 1px solid #000000;
 }
 
 .GroupData .PlayerChat .ChatInputContain{
-    width: 98%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
     z-index: 10;
 }
 
+.GroupData .PlayerChat .ChatInputContain input{
+    width: 90%;
+    height: 40px;
+    display: inline-block;
+    float: left;
+}
+
+.GroupData .PlayerChat .ChatInputContain button{
+    width: 10%;
+    display: inline-block;
+    float: left;
+}
+
 .GroupData .PlayerChat .ChatContain{ 
-    height: 390px;
+    height: 355px;
     position: relative;
     overflow: hidden;
     overflow-y: scroll;
+    /*background: #e5e5e5;*/
+    /*border: 1px solid #000000;*/
 }
 
-.GroupData .PlayerChat .ChatContain > div:last-child{
+/*.GroupData .PlayerChat .ChatContain > div:last-child{
     padding: 0px 0px 50px 0px;
-}
+}*/
 
 .SiteContent .GroupData .PlayerList{
     height: 400px;
@@ -345,7 +434,12 @@ body{
 }
 
 .SiteContent .GroupData .PlayerList > div{
-    margin: 15px 0px;
+    /*padding: 15px 0px;*/
+}
+
+
+.SiteContent .GroupData .PlayerList > div:nth-child(2n+1){
+    background: #E5E5E5;
 }
 
 .SiteContent .GroupData .PlayerList span{
@@ -372,28 +466,83 @@ body{
    Account -> Login
 ----------------------------------------- */
 
-.UserForm *{
+.MainSiteRow .MainSiteColumn input + span.ErrorMessage.field-validation-error{
+    display: inline-block;
+    position: absolute;
+    margin: 0px !important;
+    padding: 10px 0px !important;
+    top: 100%;
+    left: 0;
+    background: none;
+    color: rgba(255, 0, 0, 1);
+    font-size: 16px;
+}
+
+.SiteContent .UserForm .FormHeader *
+,.SiteContent .UserForm .FormRow{
     /*color: #A4A4A4;*/
     /*color: #606060;*/
-    color: #777777;
+    /*color: #777777;*/
+    color: #494A52;
 }
 
 .UserForm .FormHeader{
     text-align: center;
 }
 
-.UserForm .FormRow{
+.SiteContent .UserForm .FormRow{
+    padding: 15px 0px;
+    text-align: center;
+}
 
+.SiteContent .UserForm .FormRow > div{
+    position: relative;
+    display: inline;
 }
 
 .UserForm .FormRow label{
     display: inline-block;
     font-size: 18px;
     font-weight: bold;
-
+    color: inherit;
 }
 
 .UserForm .FormRow input{
-    width: 250px;
     display: inline-block;
+    background: #e5e5e5;
+    border: none;
+    color: rgba(0, 0, 0, 1);
+    font-family: Arial;
+}
+
+.UserForm .FormRow input:not([type="checkbox"]){
+    width: 250px;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+
+/*.UserForm .FormRow button{
+    display: inline-block;
+    width: auto;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-size: 18px;
+    border: none;
+    background: #E5E5E5;
+}*/
+
+.UserForm .FormRow button:hover{
+    font-weight: bold;
+}
+
+.UserForm .BottomLinks{
+    text-align: center;
+}
+
+.UserForm .BottomLinks a{
+    display: block;
+    padding: 5px 15px;
+    color: #C34012;
+    font-weight: bold;
 }

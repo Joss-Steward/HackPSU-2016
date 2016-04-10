@@ -30,8 +30,11 @@ namespace HackPSU_2016.Hubs
                             {
                                 MessageText = message,
                                 Sender = user,
-                                MessageTime = DateTime.Now
+                                MessageTime = DateTime.Now,
+                                UserName = user.UserName
                             });
+
+                        db.SaveChanges();
 
                         foreach(var member in group.Members.Select(m => m.User))
                         {
@@ -43,10 +46,10 @@ namespace HackPSU_2016.Hubs
 
                             if (member.Connections != null)
                             {
-                                foreach (var connection in user.Connections)
+                                foreach (var connection in member.Connections)
                                 {
                                     Clients.Client(connection.ConnectionID)
-                                        .addChatMessage(name, message);
+                                        .addChatMessage(group.GroupId, name, message);
                                 }
                             }
                         }

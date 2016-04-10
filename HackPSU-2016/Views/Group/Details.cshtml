@@ -9,32 +9,40 @@
     </div>
     <div class="ten columns GroupInfo">
         <div class="row GroupName">
-            Group Name
+            <h2>@Model.Name</h2>
         </div>
         <div class="row GroupDescription">
-            Group DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup Description
+            Group with @Model.Members.Count members   
         </div>
+    </div>
+</div>
+
+<div class="row GroupSectionHeaders">
+    <div class="eight columns">
+        <h2><span class="Icon Chat"></span>Chat Window</h2>
+    </div>
+    <div class="four columns">
+        <h2><span class="Icon Users"></span>Members</h2>
     </div>
 </div>
 
 <div class="row GroupData">
     <div class="eight columns PlayerChat">
-        <div class="row">
-            Chat Window
-        </div>
         <div class="row ChatContain" id="chat">
-            @foreach(var c in Model.ChatMessages.OrderByDescending(c => c.MessageTime).Take(10)) { 
-                <div class="row" style="color: white;">
+            @foreach(var c in ViewBag.ChatMessages){ 
+                <div class="row">
                     <div class="twelve columns">
                         <span></span>
-                        @c.Sender.UserName : @c.MessageText
+                        @c.Time.ToString() - @c.Sender: @c.Text
                     </div>
                 </div>
             }
         </div>
         <div class="ChatInputContain">
-            <input type="text" id="message" />
-            <input type="button" id="sendmessage" value="Send" />
+            <form id="ChatSubmitForm" action="" method="post">
+                <input type="text" id="message" />
+                <button type="submit" id="sendmessage">Send</button>
+            </form>
         </div>
     </div>
     <div class="four columns PlayerList">
@@ -57,26 +65,42 @@
     <script src="~/signalr/hubs"></script>
     <!--SignalR script to update the chat page and send messages.-->
     <script>
+        function FormSubmit(event){
+            event.preventDefault();
+            $.connection.hub.start().done(function(){
+                chat.server.sendChatMessage(@Model.GroupId, $('#message').val());
+                $('#message').val('').focus();
+                return;
+            });
+        }
+
+        (function(){
+            document.getElementById("ChatSubmitForm").addEventListener("submit", FormSubmit, false);
+        })();
+
+
         $(function () {
             // Reference the auto-generated proxy for the hub.
-            var chat = $.connection.groupChatHub;
+            chat = $.connection.groupChatHub;
             // Create a function that the hub can call back to display messages.
-            chat.client.addChatMessage = function (name, message) {
-                // Add the message to the page.
-                $('#chat').append('<div class="row" style="color: white;"><div class="twelve columns"><span></span>'
-                    + htmlEncode(name)
-                    + ': ' + htmlEncode(message) + '</div></div>');
+            chat.client.addChatMessage = function (groupid, name, message) {
+                if(groupid == @Model.GroupId) {
+                    // Add the message to the page.
+                    $('#chat').append('<div class="row"><div class="twelve columns"><span></span>'
+                        + htmlEncode(name)
+                        + ': ' + htmlEncode(message) + '</div></div>');
+                }
             };
             // Start the connection.
-            $.connection.hub.start().done(function () {
+            @*$.connection.hub.start().done(function () {
                 $('#sendmessage').click(function () {
                     // Call the Send method on the hub.
                     chat.server.sendChatMessage(@Model.GroupId, $('#message').val());
- 
+
                     // Clear text box and reset focus for next comment.
                     $('#message').val('').focus();
                 });
-            });
+            });*@
         });
         // This optional function html-encodes messages for display in the page.
         function htmlEncode(value) {

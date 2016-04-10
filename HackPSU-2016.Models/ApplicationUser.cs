@@ -11,20 +11,27 @@ namespace HackPSU_2016.Models
 {
     public enum Skill
     {
-        CrapSack = 1,
-        AwesomeSauce = 2
+        Brand_New = 1,
+        Casual = 2,
+        Veteran = 3,
+        Professional = 4
     }
 
     public enum Playstyle
     {
         Casual = 1,
-        UberHardcoreBro = 2
+        Role_Play = 2,
+        Trolling = 3,
+        Competative = 4,
+        Creative = 5,
+        Entertainment = 6
     }
 
     public enum CommunicationsPlatform
     {
         Mumble = 1,
         Steam = 2,
+        Skype = 3,
         TeamSpeak = 4
     }
 
@@ -46,14 +53,14 @@ namespace HackPSU_2016.Models
 
 
         public virtual ICollection<Game> Games { get; set; }
-        public virtual IEnumerable<UsersToGroups> Groups { get; set; }
-        public virtual IEnumerable<Notification> Notifications { get; set; }
+        public virtual ICollection<UsersToGroups> Groups { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
 
         public Skill Skill { get; set; }
         public Playstyle Playstyle { get; set; }
         public CommunicationsPlatform CommunicationsPlatform { get; set; }
 
-        public DateTime AvailableFrom { get; set; }
-        public DateTime AvailableTill { get; set; }
+        public DateTime? AvailableFrom { get; set; }
+        public DateTime? AvailableTill { get; set; }
     }
 }

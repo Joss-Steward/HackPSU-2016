@@ -14,6 +14,6 @@ namespace HackPSU_2016.Models
         public Group Group { get; set; }
 
         public string MessageText { get; set; }
-        public DateTime MessageTime { get; set; }
+        public DateTime? MessageTime { get; set; }
     }
 }

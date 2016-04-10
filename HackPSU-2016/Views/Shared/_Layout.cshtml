@@ -43,14 +43,24 @@
                 @{if(!Request.IsAuthenticated) {
                     @Html.Partial("LoginPartial", new HackPSU_2016.Models.LoginViewModel())
                 } else {
-                        <div class="six columns UserInfo">
+                        <div class="six columns">
                             <ul>
                                 <li>
-                                    <a class="UserName">UserName</a>
+                                    <a class="UserName" id="UserInfoButton">UserName</a>
+                                    <ul class="UserInfo">
+                                        <li>
+                                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" })){
+                                                @Html.AntiForgeryToken()
+                                            }
+                                            <a href="javascript: document.getElementById('logoutForm').submit()">
+                                                Logout
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
                                     <a id="NotificationsButton" class="Icon Bell">&nbsp;3</a>
-                                    <ul>
+                                    <ul class="Notifications">
                                         <li>
                                             <a href="">
                                                 Some Notification 1

@@ -79,9 +79,19 @@ function LoginToggle(){
 }
 
 
+function UserInfoToggle() {
+    var bodyElement = document.getElementById("Body");
+    var className = "ShowHeaderUserInfo";
+    if (HasClass(bodyElement, className)) {
+        RemoveClass(bodyElement, className);
+    } else {
+        AddClass(bodyElement, className);
+    }
+}
+
+
 (function Load(){
     try {
-        console.log("Notif");
         var notificationsButton = document.getElementById("NotificationsButton");
         notificationsButton.addEventListener("click", NotificationsToggle, false);
     } catch (error) {
@@ -89,11 +99,18 @@ function LoginToggle(){
     }
 
     try {
-        console.log("Login");
         var loginButton = document.getElementById("LoginButton");
         loginButton.addEventListener("click", LoginToggle, false);
     } catch (error) {
         console.log("loginButton failed");
+    }
+
+
+    try {
+        var userInfoButton = document.getElementById("UserInfoButton");
+        userInfoButton.addEventListener("click", UserInfoToggle, false);
+    } catch (error) {
+        console.log("userInfo failed");
     }
 })();
 

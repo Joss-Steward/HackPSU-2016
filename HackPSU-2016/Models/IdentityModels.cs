@@ -19,6 +19,12 @@ namespace HackPSU_2016.Models
             return new ApplicationDbContext();
         }
 
-        public virtual ICollection<Game> Games { get; set; }
+        public virtual DbSet<Game> Games { get; set; }
+        public virtual DbSet<Group> Groups { get; set; }
+        public virtual DbSet<Notification> Notifications { get; set; }
+        public virtual DbSet<UsersToGroups> UsersToGroups { get; set; }
+        public virtual DbSet<ChatMessage> ChatMessages { get; set; }
+
+        //public System.Data.Entity.DbSet<HackPSU_2016.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

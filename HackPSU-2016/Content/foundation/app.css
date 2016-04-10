@@ -126,7 +126,11 @@ body{
 }
 
 .ShowHeaderNotifications .SiteHeader #NotificationsButton
-,.ShowHeaderLogin .SiteHeader #LoginButton{
+,.ShowHeaderUserInfo .SiteHeader #UserInfoButton
+,.ShowHeaderLogin .SiteHeader #LoginButton
+,.SiteHeader #NotificationsButton:hover
+,.SiteHeader #LoginButton:hover
+,.SiteHeader #UserInfoButton:hover{
     background: rgba(162, 72, 46, 1);
 }
 
@@ -160,7 +164,8 @@ body{
     border-bottom: 1px solid rgba(255, 255, 255, .3);
 }
 
-.ShowHeaderNotifications .SiteHeader .UserInfo ul ul
+.ShowHeaderNotifications .SiteHeader ul.Notifications
+,.ShowHeaderUserInfo .SiteHeader ul.UserInfo
 ,.ShowHeaderLogin .SiteHeader .UserLogin ul ul{
     display: block;
 }

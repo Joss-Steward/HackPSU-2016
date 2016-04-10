@@ -25,7 +25,6 @@ namespace HackPSU_2016
 
         private Task configSendGridasync(IdentityMessage message)
         {
-            Console.Error.WriteLine("HELLO I AM EMAILING NOW");
             RestClient client = new RestClient();
             client.BaseUrl = new System.Uri("https://api.mailgun.net/v3");
             client.Authenticator =
@@ -33,15 +32,14 @@ namespace HackPSU_2016
                                               "key-02e6bd80fb3eaa4b6c3d82d92065ca95");
             RestRequest request = new RestRequest();
             request.AddParameter("domain",
-                                "sandbox9eb73013ef4b4ddb840e2f5f55908c32.mailgun.org", ParameterType.UrlSegment);
+                                "partyup.josssteward.com", ParameterType.UrlSegment);
             request.Resource = "{domain}/messages";
-            request.AddParameter("from", "Mailgun Sandbox <postmaster@sandbox9eb73013ef4b4ddb840e2f5f55908c32.mailgun.org>");
+            request.AddParameter("from", "Mailgun Sandbox <postmaster@partyup.josssteward.com>");
             request.AddParameter("to", "Somebody <" + message.Destination + ">");
             request.AddParameter("subject", message.Subject);
             request.AddParameter("text", message.Body);
             request.Method = Method.POST;
             client.Execute(request);
-            Console.Error.WriteLine("HELLO I AM EMAILING NOW");
 
             return Task.FromResult(0);
 

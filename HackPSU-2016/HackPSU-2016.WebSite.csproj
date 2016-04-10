@@ -217,6 +217,10 @@
     <Compile Include="Migrations\201604092217435_AddedSeed.Designer.cs">
       <DependentUpon>201604092217435_AddedSeed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604100154106_AddedConstructor.cs" />
+    <Compile Include="Migrations\201604100154106_AddedConstructor.Designer.cs">
+      <DependentUpon>201604100154106_AddedConstructor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -346,6 +350,7 @@
     <Content Include="Views\Profile\Details.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Shared\LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -374,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604092217435_AddedSeed.resx">
       <DependentUpon>201604092217435_AddedSeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604100154106_AddedConstructor.resx">
+      <DependentUpon>201604100154106_AddedConstructor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

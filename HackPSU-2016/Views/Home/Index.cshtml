@@ -13,7 +13,7 @@
     {
     foreach (var g in Model.joinedGroups)
     {
-        <a href="@Url.Action("Index", "Group", new { id = g.GroupId })">
+        <a href="@Url.Action("Details", "Group", new { id = g.GroupId })">
             <div class="UserPanelContain">
                 <div class="UserPanel">
                     @g.Name

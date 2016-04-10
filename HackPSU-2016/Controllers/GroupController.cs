@@ -27,9 +27,10 @@ namespace HackPSU_2016.Controllers
         }
 
         // GET: Group
-        public ActionResult Index()
+        public ActionResult Details(int id)
         {
-            return View();
+            var group = db.Groups.FirstOrDefault(g => g.GroupId == id);
+            return View(group);
         }
     }
 }

@@ -17,11 +17,14 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="eight columns">
+        <h2>Chat Window</h2>
+    </div>
+</div>
+
 <div class="row GroupData">
     <div class="eight columns PlayerChat">
-        <div class="row">
-            <h2>Chat Window</h2>
-        </div>
         <div class="row ChatContain" id="chat">
             @foreach(var c in Model.ChatMessages.OrderByDescending(c => c.MessageTime).Take(10)) { 
                 <div class="row">

@@ -30,7 +30,8 @@ body *{
 }
 
 body{
-    background: rgb(29,29,29);
+    /*background: rgb(29,29,29);*/
+    /*background: url("/Content/images/stardust.png");*/
 }
 
 .Icon{
@@ -76,7 +77,8 @@ body{
     background: #BE3100;
     background: linear-gradient(0deg, #BE3100, #CB5A32);
     /*box-shadow: 0px 3px 3px #CB5A32;*/
-    box-shadow: 0px 3px 3px rgba(182, 190, 255, .5);
+    /*box-shadow: 0px 3px 3px rgba(182, 190, 255, 1);*/
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 1);
     z-index: 100;
 }
 
@@ -140,7 +142,8 @@ body{
 
 .MainSiteColumn .SiteContentContain .SiteContent{
     padding: 100px 10px 10px 10px;
-    background: rgb(29,29,29);
+    /*background: rgb(29,29,29);*/
+    background: none;
 }
 
 /*.MainSiteColumn .SiteHeader div.SiteName
@@ -408,7 +411,8 @@ body{
 ,.SiteContent .UserForm .FormRow{
     /*color: #A4A4A4;*/
     /*color: #606060;*/
-    color: #777777;
+    /*color: #777777;*/
+    color: #494A52;
 }
 
 .UserForm .FormHeader{
@@ -469,4 +473,6 @@ body{
 .UserForm .BottomLinks a{
     display: block;
     padding: 5px 15px;
+    color: #C34012;
+    font-weight: bold;
 }

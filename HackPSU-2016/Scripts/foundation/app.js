@@ -68,10 +68,50 @@ function NotificationsToggle(){
 }
 
 
+function LoginToggle(){
+    var bodyElement = document.getElementById("Body");
+    var className = "ShowHeaderLogin";
+    if (HasClass(bodyElement, className)){
+        RemoveClass(bodyElement, className);
+    }else{
+        AddClass(bodyElement, className);
+    }
+}
+
+
+function UserInfoToggle() {
+    var bodyElement = document.getElementById("Body");
+    var className = "ShowHeaderUserInfo";
+    if (HasClass(bodyElement, className)) {
+        RemoveClass(bodyElement, className);
+    } else {
+        AddClass(bodyElement, className);
+    }
+}
+
 
 (function Load(){
-    var notificationsButton = document.getElementById("NotificationsButton");
-    notificationsButton.addEventListener("click", NotificationsToggle, false);
+    try {
+        var notificationsButton = document.getElementById("NotificationsButton");
+        notificationsButton.addEventListener("click", NotificationsToggle, false);
+    } catch (error) {
+        console.log("notificationsButton failed");
+    }
+
+    try {
+        var loginButton = document.getElementById("LoginButton");
+        loginButton.addEventListener("click", LoginToggle, false);
+    } catch (error) {
+        console.log("loginButton failed");
+    }
+
+
+    try {
+        var userInfoButton = document.getElementById("UserInfoButton");
+        userInfoButton.addEventListener("click", UserInfoToggle, false);
+    } catch (error) {
+        console.log("userInfo failed");
+    }
 })();
 
 

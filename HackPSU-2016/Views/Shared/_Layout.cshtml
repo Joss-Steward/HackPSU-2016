@@ -31,17 +31,17 @@
                 <div class="four columns SiteName">
                     <a href="@Url.Action("Index","Home")">
                         <img src="@Url.Content("~/Content/images/HackPSULogo.png")" />
-                        Party Up
+                        Party Up!
                     </a>
                 </div>
-                <div class="four columns MatchesGroups">
+                @*<div class="four columns MatchesGroups">
                     <a href="">
                         Matches
                     </a>
                     <a href="">
                         Groups
                     </a>
-                </div>
+                </div>*@
                 <div class="four columns UserControls">
                     @{if(!Request.IsAuthenticated){
                             <a href="@Url.Action("Login","Account")">

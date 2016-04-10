@@ -13,28 +13,33 @@
         <div class="row FormHeader">
             <h2>Log in</h2>
         </div>
-        <div class="row FormRow">
-            @Html.LabelFor(m => m.UserName,new {})
-            @Html.TextBoxFor(m => m.UserName, new{})
-            @Html.ValidationMessageFor(m=>m.UserName,"", new {@class="ErrorMessage"})
+        <div class="FormRow">
+            @Html.ValidationSummary("",new{@class="text-danger"})
         </div>
         <div class="row FormRow">
-            @Html.LabelFor(m => m.Password,new { })
-            @Html.TextBoxFor(m => m.Password,new { })
-            @Html.ValidationMessageFor(m => m.Password,"",new { @class = "ErrorMessage" })
+            <div>
+                @*@Html.LabelFor(m => m.UserName,new {})*@
+                @Html.TextBoxFor(m => m.UserName,new { @placeholder = "Username" })
+                @Html.ValidationMessageFor(m => m.UserName,"",new { @class = "ErrorMessage" })
+            </div>
+        </div>
+        <div class="row FormRow">
+            <div>
+                @*@Html.LabelFor(m => m.Password,new { })*@
+                @Html.PasswordFor(m => m.Password,new { @placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password,"",new { @class = "ErrorMessage" })
+            </div>
         </div>
         <div class="row FormRow">
             @Html.CheckBoxFor(m=>m.RememberMe)
             @Html.LabelFor(m=>m.RememberMe)
         </div>
         <div class="row FormRow">
-            <input type="submit" value="Log in"/>
+            <button type="submit">Log In</button>
         </div>
         <div class="row BottomLinks">
-            <div class="six columns">
+            <div class="twelve columns">
                 <a href="@Url.Action("Register","Account")">Register as a new user</a>
-            </div>
-            <div class="six columns">
                 <a href="@Url.Action("ForgotPassword","Account")">Forgot password?</a>
             </div>
         </div>

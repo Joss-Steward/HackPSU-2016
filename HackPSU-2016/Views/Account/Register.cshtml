@@ -3,7 +3,64 @@
     ViewBag.Title = "Register";
 }
 
-<h2>@ViewBag.Title.</h2>
+
+@using(Html.BeginForm("Register","Account",FormMethod.Post,new { @class = "form-horizontal",role = "form" })){
+    @Html.AntiForgeryToken()
+    <div class="row UserForm">
+        <div class="two columns">&nbsp;</div>
+        <div class="eight columns">
+            <div class="row FormHeader">
+                <h2>Log in</h2>
+            </div>
+            <div class="FormRow">
+                @Html.ValidationSummary("",new{@class="text-danger"})
+            </div>
+            <div class="row FormRow">
+                <div>
+                    @Html.TextBoxFor(m => m.UserName,new{})
+                    @Html.ValidationMessageFor(m => m.UserName,"",new { @class = "ErrorMessage" })
+                </div>
+            </div>
+            <div class="row FormRow">
+                <div>
+                    @Html.TextBoxFor(m => m.Password,new { @placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password,"",new { @class = "ErrorMessage" })
+                </div>
+            </div>
+            <div class="row FormRow">
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe)
+            </div>
+            <div class="row FormRow">
+                <button type="submit">Log In</button>
+            </div>
+            <div class="row BottomLinks">
+                <div class="six columns">
+                    <a href="@Url.Action("Register","Account")">Register as a new user</a>
+                </div>
+                <div class="six columns">
+                    <a href="@Url.Action("ForgotPassword","Account")">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+        <div class="two columns">&nbsp;</div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+
+
+
+
+
+
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {

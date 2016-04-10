@@ -1,5 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
 
+<!DOCTYPE html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -20,13 +21,16 @@
 
     @RenderSection("head",required: false)
     @Scripts.Render("~/bundles/modernizr")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
 </head>
-<body id="Body">
+<body id="Body" class="">
     <div class="row MainSiteRow">
         <div class="twelve columns MainSiteColumn">
             <div class="row SiteHeader">
                 <div class="four columns SiteName">
-                    Party Up
+                    <a href="@Url.Action("Index","Home")">
+                        Party Up
+                    </a>
                 </div>
                 <div class="two columns MatchesGroups">
                     <a href="">
@@ -36,50 +40,50 @@
                         Groups
                     </a>
                 </div>
-                <div class="six columns UserLogin" style="display: none;">
-                    Login
-                </div>
-                <div class="six columns UserInfo">
-                    <ul>
-                        <li>
-                            <a class="UserName">UserName</a>
-                        </li>
-                        <li>
-                            <a id="NotificationsButton" class="Icon Bell">&nbsp;3</a>
+                @{if(!Request.IsAuthenticated) {
+                    @Html.Partial("LoginPartial", new HackPSU_2016.Models.LoginViewModel())
+                } else {
+                        <div class="six columns">
                             <ul>
                                 <li>
-                                    <a href="">
-                                        Some Notification 1
-                                    </a>
+                                    <a class="UserName" id="UserInfoButton">UserName</a>
+                                    <ul class="UserInfo">
+                                        <li>
+                                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" })){
+                                                @Html.AntiForgeryToken()
+                                            }
+                                            <a href="javascript: document.getElementById('logoutForm').submit()">
+                                                Logout
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
-                                    <a href="">
-                                        Some Notification 2
-                                    </a>
+                                    <a id="NotificationsButton" class="Icon Bell">&nbsp;3</a>
+                                    <ul class="Notifications">
+                                        <li>
+                                            <a href="">
+                                                Some Notification 1
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                Some Notification 2
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                Some Notification 3
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
-                                    <a href="">
-                                        Some Notification 3
-                                    </a>
+                                    <a class="Icon Gear">&nbsp;0</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
-                            <a class="Icon Gear">&nbsp;0</a>
-                        </li>
-                    </ul>
-                    @*<div class="row">
-                        <div class="six columns UserName">
-                            UserName
                         </div>
-                        <div class="three columns Notifications">
-                            <a class="Icon Bell"></a>0
-                        </div>
-                        <div class="three columns Gear">
-                            <a class="Icon Gear"></a>0
-                        </div>
-                    </div>*@
-                </div>
+                    } }
             </div>
             <div class="row SiteContentContain">
                 <div class="one columns LeftPageGutter">

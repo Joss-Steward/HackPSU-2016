@@ -36,7 +36,8 @@ namespace HackPSU_2016
 
       bundles.Add(new ScriptBundle("~/bundles/foundation").Include(
                 "~/Scripts/foundation/jquery.*",
-                "~/Scripts/foundation/app.js"));
+                "~/Scripts/foundation/app.js",
+                "~/Scripts/jquery.signalR-2.2.0.min.js"));
       #endregion
         }
     }

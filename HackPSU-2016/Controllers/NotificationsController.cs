@@ -17,7 +17,7 @@ namespace HackPSU_2016.Controllers
         public ActionResult Index()
         {
             var id = User.Identity.GetUserId();
-            var result = from applicationUsers in db.Users where applicationUsers.Id == id select applicationUsers;
+            var result = from applicationUsers in db.Users where applicationUsers.Id == id select applicationUsers.Notifications;
             var results = result.ToList();
             return Json(results, JsonRequestBehavior.AllowGet);
         }

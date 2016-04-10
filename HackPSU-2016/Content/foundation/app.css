@@ -26,7 +26,7 @@ body .row
 }
 
 body{
-    background: rgba(183, 183, 182, 1);
+    background: rgb(29,29,29);
 }
 
 .Icon{
@@ -65,19 +65,30 @@ body{
     max-width: 100%;
     top: 0;
     left: 0;
-    background: rgba(20, 19, 17, 1);
-    color: rgba(255, 255, 255, 1);
-    font-size: 20px;
+    /*background: #0093e5;*/
+    background: #BE3100;
+    /*background: linear-gradient(0deg, #ffffff 90%, #BE3100 10%);*/
+    box-shadow: 0px 3px 3px #cb5a32;
     z-index: 100;
 }
 
-.MainSiteRow .MainSiteColumn .SiteHeader *{
-    font-size: 18px;
+.MainSiteRow .MainSiteColumn .SiteHeader a {
+    color: #dee1e3;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.MainSiteRow .MainSiteColumn .SiteHeader a{
+    font-size: 22px;
+}
+
+.MainSiteRow .MainSiteColumn .SiteHeader .SiteName a{
+    font-size: 48px;
+    font-weight: bold;
 }
 
 .MainSiteRow .MainSiteColumn .LeftPageGutter
 ,.MainSiteRow .MainSiteColumn .RightPageGutter{
-    /*background: rgba(183, 183, 182, 1);*/
+    /*background: rgba(53, 50, 45, 1);*/
 }
 
 
@@ -87,7 +98,7 @@ body{
 
 .MainSiteColumn .SiteContentContain .SiteContent{
     padding: 100px 10px 10px 10px;
-    background: rgba(104, 103, 102, 1);
+    background: rgb(29,29,29);
 }
 
 .MainSiteColumn .SiteHeader div.SiteName
@@ -226,8 +237,11 @@ body{
 
 .HomePageUserScroller .UserPanelContain .UserPanel{
     height: 100px;
+    margin-bottom: 15px;
     padding: 5px;
     background: rgba(255, 255, 255, .3);
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px rgba(53, 50, 45, .2), -5px 2px 2px rgba(53, 50, 45, .2), 5px 2px 2px rgba(53, 50, 45, 1);
 }
 
 

@@ -30,11 +30,15 @@ body{
 }
 
 .Icon{
-    font-family: FontAwesome;
+    /*font-family: FontAwesome;*/
     display: inline-block;
     font-size: inherit;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
+}
+
+.Icon:before{
+    font-family: FontAwesome !important;
 }
 
 .Icon.Bell:before{
@@ -65,25 +69,43 @@ body{
     max-width: 100%;
     top: 0;
     left: 0;
-    /*background: #0093e5;*/
     background: #BE3100;
-    /*background: linear-gradient(0deg, #ffffff 90%, #BE3100 10%);*/
-    box-shadow: 0px 3px 3px #cb5a32;
+    background: linear-gradient(0deg, #BE3100, #CB5A32);
+    box-shadow: 0px 3px 3px #CB5A32;
     z-index: 100;
 }
 
-.MainSiteRow .MainSiteColumn .SiteHeader a {
+.MainSiteRow .MainSiteColumn .SiteHeader a{
+    display: inline-block;
     color: #dee1e3;
     font-family: 'Quicksand', sans-serif;
+    font-size: 24px;
+    padding: 20px 10px;
 }
 
-.MainSiteRow .MainSiteColumn .SiteHeader a{
-    font-size: 22px;
+.MainSiteRow .MainSiteColumn .SiteHeader .SiteName a{
+    display: block;
+    padding: 15px 10px 10px 100px;
+    text-shadow: 0px 3px #1D1D1D, -1px 0px #1D1D1D, 1px 0px #1D1D1D;
+}
+
+.MainSiteRow .MainSiteColumn .SiteHeader .SiteName img{
+    position: absolute;
+    top: -12px;
+    left: 0;
+    width: 95px;
+    height: auto;
+    transform: rotate(-20deg);
 }
 
 .MainSiteRow .MainSiteColumn .SiteHeader .SiteName a{
     font-size: 48px;
     font-weight: bold;
+}
+
+.MainSiteColumn .SiteHeader .UserControls{
+    padding-right: 50px;
+    text-align: right;
 }
 
 .MainSiteRow .MainSiteColumn .LeftPageGutter
@@ -101,10 +123,10 @@ body{
     background: rgb(29,29,29);
 }
 
-.MainSiteColumn .SiteHeader div.SiteName
+/*.MainSiteColumn .SiteHeader div.SiteName
 ,.MainSiteColumn .SiteHeader div.MatchesGroups{
     padding: 15px 10px;
-}
+}*/
 
 .SiteHeader .UserInfo{
     padding: 0px 20px;
@@ -142,7 +164,8 @@ body{
 ,.SiteHeader #NotificationsButton:hover
 ,.SiteHeader #LoginButton:hover
 ,.SiteHeader #UserInfoButton:hover{
-    background: rgba(162, 72, 46, 1);
+    /*background: rgba(162, 72, 46, 1);*/
+    background: linear-gradient(0deg, #CB5A32, #BE3100);
 }
 
 /*.SiteHeader .UserInfo > ul ul{*/
@@ -151,9 +174,10 @@ body{
     display: none;
     position: absolute;
     width: auto;
-    top: 100%;
+    top: 110%;
     right: 0;
-    background: rgba(127, 127, 127, 1);
+    background: rgba(162, 72, 46, 1);
+    /*box-shadow: 4px 1px 3px #c75b3c, -4px 1px 3px #c75b3c, 0px 4px 3px #c75b3c;*/
 }
 
 /*.SiteHeader .UserInfo ul ul > li{*/
@@ -192,6 +216,10 @@ body{
 
 .SiteHeader .UserLogin ul li span.field-validation-error{
     display: none;
+}
+
+.ErrorMessage{
+    color: rgba(255, 0, 0, 1);
 }
 
 /* -----------------------------------------
@@ -336,4 +364,36 @@ body{
     position: absolute;
     bottom: 10px;
     left: 10px;
+}
+
+
+
+/* -----------------------------------------
+   Account -> Login
+----------------------------------------- */
+
+.UserForm *{
+    /*color: #A4A4A4;*/
+    /*color: #606060;*/
+    color: #777777;
+}
+
+.UserForm .FormHeader{
+    text-align: center;
+}
+
+.UserForm .FormRow{
+
+}
+
+.UserForm .FormRow label{
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+.UserForm .FormRow input{
+    width: 250px;
+    display: inline-block;
 }

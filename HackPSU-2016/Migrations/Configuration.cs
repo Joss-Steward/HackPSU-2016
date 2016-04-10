@@ -118,6 +118,7 @@ namespace HackPSU_2016.Migrations
             }
 
             SaveChanges(context);
+            */
         }
 
         private void SaveChanges(DbContext context)

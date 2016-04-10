@@ -61,11 +61,13 @@
             // Reference the auto-generated proxy for the hub.
             var chat = $.connection.groupChatHub;
             // Create a function that the hub can call back to display messages.
-            chat.client.addChatMessage = function (name, message) {
-                // Add the message to the page.
-                $('#chat').append('<div class="row" style="color: white;"><div class="twelve columns"><span></span>'
-                    + htmlEncode(name)
-                    + ': ' + htmlEncode(message) + '</div></div>');
+            chat.client.addChatMessage = function (groupid, name, message) {
+                if(groupid == @Model.GroupId) {
+                    // Add the message to the page.
+                    $('#chat').append('<div class="row" style="color: white;"><div class="twelve columns"><span></span>'
+                        + htmlEncode(name)
+                        + ': ' + htmlEncode(message) + '</div></div>');
+                }
             };
             // Start the connection.
             $.connection.hub.start().done(function () {

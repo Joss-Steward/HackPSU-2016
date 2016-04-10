@@ -43,10 +43,10 @@ namespace HackPSU_2016.Hubs
 
                             if (member.Connections != null)
                             {
-                                foreach (var connection in user.Connections)
+                                foreach (var connection in member.Connections)
                                 {
                                     Clients.Client(connection.ConnectionID)
-                                        .addChatMessage(name, message);
+                                        .addChatMessage(group.GroupId, name, message);
                                 }
                             }
                         }

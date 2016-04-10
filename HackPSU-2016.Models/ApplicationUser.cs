@@ -64,7 +64,7 @@ namespace HackPSU_2016.Models
             Thursday  = new Availability();
             Friday    = new Availability();
             Saturday  = new Availability();
-    }
+        }
 
 
         public virtual ICollection<Game> Games { get; set; }
@@ -85,5 +85,14 @@ namespace HackPSU_2016.Models
         public Availability Thursday { get; set; }
         public Availability Friday { get; set; }
         public Availability Saturday { get; set; }
+
+        public ICollection<Connection> Connections { get; set; }
+    }
+
+    public class Connection
+    {
+        public string ConnectionID { get; set; }
+        public string UserAgent { get; set; }
+        public bool Connected { get; set; }
     }
 }

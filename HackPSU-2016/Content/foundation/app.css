@@ -33,6 +33,7 @@ body a
 ,a:link
 ,a:visited{
     color: #C34012;
+    outline: none;
     /*font-weight: bold;*/
 }
 
@@ -139,7 +140,7 @@ body{
     z-index: 4;
 }
 
-.MainSiteColumn .SiteHeader .UserControls a:not(:last-child):after{
+.MainSiteColumn .SiteHeader .UserControls li:not(:last-child) a:after{
     position: absolute;
     top: 10px;
     right: 0px;
@@ -322,8 +323,13 @@ body{
     font-size: 35px;
 }
 
-.HomePageUserScroller .UserPanelContain{
+.HomePageUserScroller a{
+    display: inline-block;
     width: 20%;
+}
+
+.HomePageUserScroller .UserPanelContain{
+    width: 100%;
     display: inline-block;
     padding: 0px 10px;
 }

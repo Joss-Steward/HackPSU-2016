@@ -1,5 +1,6 @@
-﻿@model HackPSU_2016.Models.HomePageViewModel
-
+﻿
+@using HackPSU_2016.Models
+@model HackPSU_2016.Models.HomePageViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -31,16 +32,35 @@
     </div>
 </div>
 
-@if (Model.potentialGroups.Count != 0)
-{
-foreach (var g in Model.potentialGroups)
-{
-    <div class="row">
-        @g.Name
-    </div>
-}
-}
-else
-{
+<div class="row">
+    @if(Model.potentialGroups.Count!=0) {
+        foreach(var group in Model.potentialGroups) {
+            List<UsersToGroups> members = group.Members.Cast<UsersToGroups>().ToList();
+            <div class="four columns">
+                <div class="row">
+                    <div class="twelve columns">
+                        @group.Name
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="six columns">
+                        @foreach(UsersToGroups member in members) {
+                            <div class="twelve columns">
+                                @member.User.UserName
+                            </div>
+                        }
+                    </div>
+                    <div class="six columns">
+                        @foreach(UsersToGroups member in members) {
+                            <div class="twelve columns">
+                                @member.User.UserName
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    } else {
     <b>Need potential groups to join... </b>
 }
+</div>

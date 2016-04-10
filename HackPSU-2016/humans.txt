@@ -6,6 +6,10 @@ Site: https://josssteward.com
 Twitter: @JossSteward                            
 Location: Chambersburg, Pennsylvania
 
+Your title: Chris Hersh
+Site: http://chrishersh.com
+Location: Allentown, Pennsylvania
+
 /* SITE */
 Standards: HTML5, CSS3
 Components: jQuery, Orbit, Reveal

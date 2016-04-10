@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201604092217435_AddedSeed.Designer.cs">
       <DependentUpon>201604092217435_AddedSeed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604100113229_AddedAvailabilityFields.cs" />
+    <Compile Include="Migrations\201604100113229_AddedAvailabilityFields.Designer.cs">
+      <DependentUpon>201604100113229_AddedAvailabilityFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -257,6 +261,7 @@
     <Content Include="Content\images\foundation\orbit\right-arrow.png" />
     <Content Include="Content\images\foundation\orbit\rotator-black.png" />
     <Content Include="Content\images\foundation\orbit\timer-black.png" />
+    <Content Include="Content\images\HackPSUFinal.png" />
     <Content Include="Content\images\HackPSUFinal01.png" />
     <Content Include="Endpoints.txt" />
     <Content Include="favicon.ico" />
@@ -371,6 +376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604092217435_AddedSeed.resx">
       <DependentUpon>201604092217435_AddedSeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604100113229_AddedAvailabilityFields.resx">
+      <DependentUpon>201604100113229_AddedAvailabilityFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

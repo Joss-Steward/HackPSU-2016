@@ -19,6 +19,7 @@ namespace HackPSU_2016.Migrations
 
         protected override void Seed(HackPSU_2016.Models.ApplicationDbContext context)
         {
+           /*
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -143,9 +144,9 @@ namespace HackPSU_2016.Migrations
                     Group = saucy,
                     DateApproved = null
                 });
-            */
+            
 
-            SaveChanges(context);
+            SaveChanges(context);*/
         }
 
         private void SaveChanges(DbContext context)

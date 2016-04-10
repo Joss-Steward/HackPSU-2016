@@ -72,28 +72,11 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a id="NotificationsButton" class="Icon Bell">&nbsp;3</a>
-                                    <ul class="Notifications">
-                                        <li>
-                                            <a href="">
-                                                Some Notification 1
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                Some Notification 2
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                Some Notification 3
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    @Html.Partial("../Notifications/NotificationsPartial")
                                 </li>
-                                <li>
+                                @*<li>
                                     <a class="Icon Gear">&nbsp;0</a>
-                                </li>
+                                </li>*@
                             </ul>
                         } }
                 </div>

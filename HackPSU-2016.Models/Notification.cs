@@ -21,7 +21,7 @@ namespace HackPSU_2016.Models
 
         public NotificationType NotificationType { get; set; }
 
-        public DateTime TimeSent { get; set; }
-        public DateTime TimeDismissed { get; set; }
+        public DateTime? TimeSent { get; set; }
+        public DateTime? TimeDismissed { get; set; }
     }
 }

@@ -9,10 +9,10 @@
     </div>
     <div class="ten columns GroupInfo">
         <div class="row GroupName">
-            <h2>Group Name</h2>
+            <h2>@Model.Name</h2>
         </div>
         <div class="row GroupDescription">
-            Group DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup DescriptionGroup
+            Group with @Model.Members.Count members   
         </div>
     </div>
 </div>
@@ -29,11 +29,11 @@
 <div class="row GroupData">
     <div class="eight columns PlayerChat">
         <div class="row ChatContain" id="chat">
-            @foreach(var c in Model.ChatMessages.OrderByDescending(c => c.MessageTime).Take(10)){ 
+            @foreach(var c in ViewBag.ChatMessages){ 
                 <div class="row">
                     <div class="twelve columns">
                         <span></span>
-                        @c.Sender.UserName : @c.MessageText
+                        @c.Time.ToString() - @c.Sender: @c.Text
                     </div>
                 </div>
             }

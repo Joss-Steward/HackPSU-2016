@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using HackPSU_2016.Models;
 using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity.Validation;
 
 namespace HackPSU_2016.Controllers
 {
@@ -30,19 +31,20 @@ namespace HackPSU_2016.Controllers
         }
 
         // GET: Profile
-        public async Task<ActionResult> Index()
-        {
-            return View(await db.Users.ToListAsync());
-        }
+        //public async Task<ActionResult> Index()
+        //{
+        //    return View(await db.Users.ToListAsync());
+        //}
 
         // GET: Profile/Details/5
+        [Authorize]
         public async Task<ActionResult> Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = await UserManager.FindByIdAsync(id);
+            ApplicationUser applicationUser = await UserManager.FindByNameAsync(id);
             if (applicationUser == null)
             {
                 return HttpNotFound();
@@ -50,14 +52,11 @@ namespace HackPSU_2016.Controllers
             return View(applicationUser);
         }
 
-        // GET: Profile/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        // GET: Profile/Edit
+        [Authorize]
+        public async Task<ActionResult> Edit()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ApplicationUser applicationUser = await UserManager.FindByIdAsync(id);
+            ApplicationUser applicationUser = await UserManager.FindByNameAsync(User.Identity.Name);
             if (applicationUser == null)
             {
                 return HttpNotFound();
@@ -70,41 +69,42 @@ namespace HackPSU_2016.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Skill,Playstyle,CommunicationsPlatform,AvailableFrom,AvailableTill,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        [Authorize]
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Skill,Playstyle,CommunicationsPlatform,")] ApplicationUser applicationUser)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(applicationUser).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            return View(applicationUser);
-        }
+                if (ModelState.IsValid)
+                {
+                    var user = db.Users.FirstOrDefault(u => u.Id == applicationUser.Id);
 
-        // GET: Profile/Delete/5
-        public async Task<ActionResult> Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    user.Skill = applicationUser.Skill;
+                    user.Playstyle = applicationUser.Playstyle;
+                    user.CommunicationsPlatform = applicationUser.CommunicationsPlatform;
+                    
+                    db.Entry(user).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Details", new { id = user.UserName });
+                }
             }
-            ApplicationUser applicationUser = await UserManager.FindByIdAsync(id);
-            if (applicationUser == null)
+            catch (DbEntityValidationException ex)
             {
-                return HttpNotFound();
-            }
-            return View(applicationUser);
-        }
+                // Retrieve the error messages as a list of strings.
+                var errorMessages = ex.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => x.ErrorMessage);
 
-        // POST: Profile/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
-        {
-            ApplicationUser applicationUser = await UserManager.FindByIdAsync(id);
-            db.Users.Remove(applicationUser);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+                // Join the list to a single string.
+                var fullErrorMessage = string.Join("; ", errorMessages);
+
+                // Combine the original exception message with the new one.
+                var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+
+                // Throw a new DbEntityValidationException with the improved exception message.
+                throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+            }
+            
+            return View(applicationUser);
         }
 
         protected override void Dispose(bool disposing)

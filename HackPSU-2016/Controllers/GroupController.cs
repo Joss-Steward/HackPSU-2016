@@ -30,6 +30,23 @@ namespace HackPSU_2016.Controllers
         public ActionResult Details(int id)
         {
             var group = db.Groups.FirstOrDefault(g => g.GroupId == id);
+
+            if (group != null)
+            {
+                var messages = group.ChatMessages
+                    .OrderByDescending(c => c.MessageTime)
+                    .Take(20)
+                    .ToList();
+
+                messages.Reverse();
+
+                ViewBag.ChatMessages = messages.Select(m => new ChatMessageViewModel
+                {
+                    Sender = m.UserName,
+                    Time = m.MessageTime ?? DateTime.Now,
+                    Text = m.MessageText
+                });
+            }
             return View(group);
         }
     }

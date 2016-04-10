@@ -73,6 +73,14 @@ body{
     content: "\f054";
 }
 
+.Icon.Chat:before{
+    content: "\f075";
+}
+
+.Icon.Users:before{
+    content: "\f0c0";
+}
+
 .MainSiteRow
 ,.MainSiteColumn{
     width: 100%;
@@ -163,7 +171,7 @@ body{
 }*/
 
 .SiteHeader .UserInfo{
-    padding: 0px 20px;
+    /*padding: 0px 20px;*/
 }
 
 /*.SiteHeader .UserInfo > ul{*/
@@ -208,7 +216,9 @@ body{
     display: none;
     position: absolute;
     width: auto;
-    top: 110%;
+    min-width: 100%;
+    padding: 0px;
+    top: 106%;
     right: 0;
     background: rgba(162, 72, 46, 1);
     /*box-shadow: 4px 1px 3px #c75b3c, -4px 1px 3px #c75b3c, 0px 4px 3px #c75b3c;*/
@@ -227,6 +237,10 @@ body{
     width: 100%;
     padding: 10px 15px;
     white-space: nowrap;
+}
+
+.SiteHeader ul ul > li > a:hover{
+    background: linear-gradient(0deg, #CB5A32, #BE3100);
 }
 
 .SiteHeader .UserInfo ul ul > li:not(:last-child) a{
@@ -359,6 +373,12 @@ body{
 .SiteContent .GroupData{
 }
 
+.GroupSectionHeaders .Icon{
+    padding-right: 10px;
+    font-size: 35px;
+
+}
+
 .GroupData .PlayerChat
 ,.GroupData .PlayerChat .ChatInputContain{
     height: 400px;
@@ -366,8 +386,9 @@ body{
 
 .GroupData .PlayerChat{
     position: relative;
-    padding: 10px;
+    /*padding: 10px;*/
     overflow: hidden;
+    border: 1px solid #000000;
 }
 
 .GroupData .PlayerChat .ChatInputContain{
@@ -382,6 +403,7 @@ body{
 
 .GroupData .PlayerChat .ChatInputContain input{
     width: 90%;
+    height: 40px;
     display: inline-block;
     float: left;
 }
@@ -393,17 +415,17 @@ body{
 }
 
 .GroupData .PlayerChat .ChatContain{ 
-    height: 350px;
+    height: 355px;
     position: relative;
     overflow: hidden;
     overflow-y: scroll;
     /*background: #e5e5e5;*/
-    border: 1px solid #000000;
+    /*border: 1px solid #000000;*/
 }
 
-.GroupData .PlayerChat .ChatContain > div:last-child{
+/*.GroupData .PlayerChat .ChatContain > div:last-child{
     padding: 0px 0px 50px 0px;
-}
+}*/
 
 .SiteContent .GroupData .PlayerList{
     height: 400px;
@@ -412,7 +434,12 @@ body{
 }
 
 .SiteContent .GroupData .PlayerList > div{
-    margin: 15px 0px;
+    /*padding: 15px 0px;*/
+}
+
+
+.SiteContent .GroupData .PlayerList > div:nth-child(2n+1){
+    background: #E5E5E5;
 }
 
 .SiteContent .GroupData .PlayerList span{

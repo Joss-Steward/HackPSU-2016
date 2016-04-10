@@ -141,11 +141,11 @@ body{
 
 .MainSiteColumn .SiteHeader .UserControls a:not(:last-child):after{
     position: absolute;
-    top: 15px;
+    top: 10px;
     right: 0px;
     content: "";
     width: 1px;
-    height: 30px;
+    height: 40px;
     border-left: 1px solid rgba(255, 255, 255, .5);
 }
 
@@ -187,11 +187,11 @@ body{
 }
 
 /*.SiteHeader .UserInfo > ul > li:not(:first-child){*/
-.SiteHeader > div > ul > li:not(:first-child){
+/*.SiteHeader > div > ul > li:not(:first-child){
     -webkit-box-shadow: -12px 1px 0 -11px rgba(255, 255, 255, .4);
     -moz-box-shadow: -12px 1px 0 -11px rgba(255, 255, 255, .4);
     box-shadow: -12px 1px 0 -11px rgba(255, 255, 255, .4);
-}
+}*/
 
 /*.SiteHeader .UserInfo > ul li a{*/
 .SiteHeader ul > li > a{
@@ -218,7 +218,7 @@ body{
     width: auto;
     min-width: 100%;
     padding: 0px;
-    top: 106%;
+    top: 105%;
     right: 0;
     background: rgba(162, 72, 46, 1);
     /*box-shadow: 4px 1px 3px #c75b3c, -4px 1px 3px #c75b3c, 0px 4px 3px #c75b3c;*/

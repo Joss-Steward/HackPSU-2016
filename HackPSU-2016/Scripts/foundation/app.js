@@ -57,7 +57,27 @@ function GetRadioGroupValue(radioName) {
 }
 
 
-function NotificationsToggle(){
+function HideOthers(newClassName){
+    var bodyElement = document.getElementById("Body");
+    var className = "ShowHeaderNotifications";
+    if (newClassName != className && HasClass(bodyElement, className)) {
+        RemoveClass(bodyElement, className);
+    }
+
+    var className = "ShowHeaderLogin";
+    if (newClassName != className && HasClass(bodyElement, className)) {
+        RemoveClass(bodyElement, className);
+    }
+
+    var className = "ShowHeaderUserInfo";
+    if (newClassName != className && HasClass(bodyElement, className)) {
+        RemoveClass(bodyElement, className);
+    }
+}
+
+
+function NotificationsToggle() {
+    HideOthers("ShowHeaderNotifications");
     var bodyElement = document.getElementById("Body");
     var className = "ShowHeaderNotifications";
     if(HasClass(bodyElement, className)){
@@ -68,7 +88,8 @@ function NotificationsToggle(){
 }
 
 
-function LoginToggle(){
+function LoginToggle() {
+    HideOthers("ShowHeaderLogin");
     var bodyElement = document.getElementById("Body");
     var className = "ShowHeaderLogin";
     if (HasClass(bodyElement, className)){
@@ -80,6 +101,7 @@ function LoginToggle(){
 
 
 function UserInfoToggle() {
+    HideOthers("ShowHeaderUserInfo");
     var bodyElement = document.getElementById("Body");
     var className = "ShowHeaderUserInfo";
     if (HasClass(bodyElement, className)) {

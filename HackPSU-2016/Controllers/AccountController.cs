@@ -228,7 +228,7 @@ namespace HackPSU_2016.Controllers
                         }
                         throw;
                     }
-                    return View("Login");
+                    return RedirectToAction("Login","Account");
                 }
                 AddErrors(result);
             }

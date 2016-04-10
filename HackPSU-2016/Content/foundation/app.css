@@ -29,9 +29,20 @@ body *{
     font-family: 'Quicksand', sans-serif;
 }
 
+body a
+,a:link
+,a:visited{
+    color: #C34012;
+    /*font-weight: bold;*/
+}
+
 body{
     /*background: rgb(29,29,29);*/
     /*background: url("/Content/images/stardust.png");*/
+}
+
+.MainSiteRow .MainSiteColumn *{
+    font-size: 18px;
 }
 
 .Icon{
@@ -243,6 +254,12 @@ body{
 
 .ErrorMessage{
     color: rgba(255, 0, 0, 1);
+}
+
+.MainSiteRow .MainSiteColumn .SiteContentContain .SiteContent h2{ 
+    font-size: 40px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 1);
 }
 
 /* -----------------------------------------

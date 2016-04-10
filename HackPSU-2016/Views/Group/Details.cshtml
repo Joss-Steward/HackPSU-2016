@@ -37,6 +37,7 @@
                     </div>
                 </div>
             }
+            <a id="ChatAnchor"></a>
         </div>
         <div class="ChatInputContain">
             <form id="ChatSubmitForm" action="" method="post">
@@ -79,28 +80,27 @@
         })();
 
 
+
+        // Add the message to the page.
+        //$('#chat').append('<div class="row"><div class="twelve columns"><span></span>'
+        //    + htmlEncode(name)
+        //    + ': ' + htmlEncode(message) + '</div></div>');
+
         $(function () {
             // Reference the auto-generated proxy for the hub.
             chat = $.connection.groupChatHub;
             // Create a function that the hub can call back to display messages.
             chat.client.addChatMessage = function (groupid, name, message) {
-                if(groupid == @Model.GroupId) {
-                    // Add the message to the page.
-                    $('#chat').append('<div class="row"><div class="twelve columns"><span></span>'
-                        + htmlEncode(name)
-                        + ': ' + htmlEncode(message) + '</div></div>');
+                var theGroupId = @Model.GroupId;
+                if(groupid == theGroupId) {
+                    var text = "<div class=\"row\"><div class=\"twelve columns\"><span></span>"+ htmlEncode(name)+ " : " + htmlEncode(message) + "</div></div>";
+                    $(text).insertBefore($("#ChatAnchor"));
+                    var d = $('#ChatAnchor');
+                    d.scrollTop(d.prop("scrollHeight"));
+                    //$("#ChatAnchor").focus();
+                    //$('#message').val('').focus();
                 }
-            };
-            // Start the connection.
-            @*$.connection.hub.start().done(function () {
-                $('#sendmessage').click(function () {
-                    // Call the Send method on the hub.
-                    chat.server.sendChatMessage(@Model.GroupId, $('#message').val());
-
-                    // Clear text box and reset focus for next comment.
-                    $('#message').val('').focus();
-                });
-            });*@
+            }
         });
         // This optional function html-encodes messages for display in the page.
         function htmlEncode(value) {

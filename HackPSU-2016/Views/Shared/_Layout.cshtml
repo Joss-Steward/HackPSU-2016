@@ -46,7 +46,16 @@
                         <div class="six columns">
                             <ul>
                                 <li>
-                                    <a class="UserName" id="UserInfoButton">UserName</a>
+                                    <a class="UserName" id="UserInfoButton">
+                                        @{
+                                            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+                                            if(string.IsNullOrEmpty(userName)){
+                                                <text>null</text>
+                                            }else{
+                                                @userName
+                                            }
+                                        }
+                                    </a>
                                     <ul class="UserInfo">
                                         <li>
                                             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" })){

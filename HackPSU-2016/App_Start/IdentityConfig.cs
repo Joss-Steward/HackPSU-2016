@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using HackPSU_2016.Models;
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace HackPSU_2016
 {
@@ -18,8 +20,31 @@ namespace HackPSU_2016
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
+            return configSendGridasync(message);
+        }
+
+        private Task configSendGridasync(IdentityMessage message)
+        {
+            Console.Error.WriteLine("HELLO I AM EMAILING NOW");
+            RestClient client = new RestClient();
+            client.BaseUrl = new System.Uri("https://api.mailgun.net/v3");
+            client.Authenticator =
+                   new HttpBasicAuthenticator("api",
+                                              "key-02e6bd80fb3eaa4b6c3d82d92065ca95");
+            RestRequest request = new RestRequest();
+            request.AddParameter("domain",
+                                "sandbox9eb73013ef4b4ddb840e2f5f55908c32.mailgun.org", ParameterType.UrlSegment);
+            request.Resource = "{domain}/messages";
+            request.AddParameter("from", "Mailgun Sandbox <postmaster@sandbox9eb73013ef4b4ddb840e2f5f55908c32.mailgun.org>");
+            request.AddParameter("to", "Somebody <" + message.Destination + ">");
+            request.AddParameter("subject", message.Subject);
+            request.AddParameter("text", message.Body);
+            request.Method = Method.POST;
+            client.Execute(request);
+            Console.Error.WriteLine("HELLO I AM EMAILING NOW");
+
             return Task.FromResult(0);
+
         }
     }
 

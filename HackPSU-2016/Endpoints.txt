@@ -10,7 +10,7 @@
 	get
 /Group/view/<id>
 	get
-/Profile/game-suggestions/<text>
+/Game/Suggest?Text=<text> -- DONE
 	get
 /Profile/edit
 	get

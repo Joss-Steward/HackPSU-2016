@@ -200,6 +200,14 @@ namespace HackPSU_2016.Controllers
                         // Could also be before try if you know the exception occurs in SaveChanges
 
                         var group = db.Groups.FirstOrDefault();
+                        if(group == null)
+                        {
+                            group = new Group() { Name = "Awesome Sauce" };
+                            db.Groups.Add(group);
+                            db.SaveChanges();
+                            group = db.Groups.FirstOrDefault();
+                        }
+
                         var u = db.Users.Where(un => un.UserName == user.UserName)
                             .SingleOrDefault();
 

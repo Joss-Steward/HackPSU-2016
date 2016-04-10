@@ -35,6 +35,14 @@ namespace HackPSU_2016.Models
         TeamSpeak = 4
     }
 
+    public class Availability
+    {
+        public bool Morning { get; set; }
+        public bool Afternoon { get; set; }
+        public bool Evening { get; set; }
+        public bool Night { get; set; }
+    }
+
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
@@ -62,5 +70,15 @@ namespace HackPSU_2016.Models
 
         public DateTime? AvailableFrom { get; set; }
         public DateTime? AvailableTill { get; set; }
+
+        public Availability Sunday { get; set; }
+        public Availability Monday { get; set; }
+        public Availability Tuesday { get; set; }
+        public Availability Wednesday { get; set; }
+        public Availability Thursday { get; set; }
+        public Availability Friday { get; set; }
+        public Availability Saturday { get; set; }
+
+
     }
 }

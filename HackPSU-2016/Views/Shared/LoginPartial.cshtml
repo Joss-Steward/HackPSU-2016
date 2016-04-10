@@ -1,0 +1,49 @@
+﻿
+
+@model HackPSU_2016.Models.LoginViewModel
+
+<div class="six columns UserLogin">
+    <ul>
+        <li>
+            <a id="LoginButton">
+                Login
+            </a>
+
+            @using(Html.BeginForm("Login","Account",new { ReturnUrl = ViewBag.ReturnUrl },FormMethod.Post,new { @class = "form-horizontal",role = "form" })) {
+                @Html.AntiForgeryToken()
+                <ul>
+                    <li>
+                        <div>
+                            @Html.LabelFor(m => m.UserName)
+                            @Html.TextBoxFor(m => m.UserName,new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.UserName,"",new { @class = "text-danger" })
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            @Html.LabelFor(m => m.Password)
+                            @Html.PasswordFor(m => m.Password,new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password,"",new { @class = "text-danger" })
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <input type="submit" value="Log in" class="btn btn-default" />
+                        </div>
+                    </li>
+                </ul>
+            }
+        </li>
+        <li>
+            <a href="@Url.Action("Register","Account")" id="RegisterButton">
+                Register
+            </a>
+        </li>
+    </ul>
+</div>

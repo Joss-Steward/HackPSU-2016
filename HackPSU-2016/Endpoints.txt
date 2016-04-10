@@ -1,0 +1,30 @@
+﻿/Group/approve/<group_id>
+	post
+/Group/reject/<group_id>
+	post
+/Group/get-suggestions
+	get
+/Group/view/<group_id>
+	get
+/Group/view/<id>
+	get
+
+/Chat/message/<group_id>
+	post
+
+/Game/Suggest?Text=<text> -- DONE
+	get
+
+/Profile/edit
+	get
+/Profile/edit
+	post
+/Profile/view/<id>
+	get
+
+/Notifications/get
+	get
+/Notification/follow/<id>
+	get
+/Notifications/dismiss
+	post <id>

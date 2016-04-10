@@ -12,7 +12,7 @@ namespace HackPSU_2016.Models
 
         public string Name { get; set; }
 
-        public virtual IEnumerable<UsersToGroups> Members { get; set; }
-        public virtual IEnumerable<ChatMessage> ChatMessages { get; set; }
+        public virtual ICollection<UsersToGroups> Members { get; set; }
+        public virtual ICollection<ChatMessage> ChatMessages { get; set; }
     }
 }

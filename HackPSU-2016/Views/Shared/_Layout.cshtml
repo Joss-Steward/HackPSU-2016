@@ -30,10 +30,11 @@
             <div class="row SiteHeader">
                 <div class="four columns SiteName">
                     <a href="@Url.Action("Index","Home")">
+                        <img src="@Url.Content("~/Content/images/HackPSULogo.png")" />
                         Party Up
                     </a>
                 </div>
-                <div class="two columns MatchesGroups">
+                <div class="four columns MatchesGroups">
                     <a href="">
                         Matches
                     </a>
@@ -41,25 +42,31 @@
                         Groups
                     </a>
                 </div>
-                @{if(!Request.IsAuthenticated) {
-                    @Html.Partial("LoginPartial", new HackPSU_2016.Models.LoginViewModel())
-                } else {
-                        <div class="six columns">
+                <div class="four columns UserControls">
+                    @{if(!Request.IsAuthenticated){
+                            <a href="@Url.Action("Login","Account")">
+                                Login
+                            </a>
+                            <a href="@Url.Action("Register","Account")">
+                                Register
+                            </a>
+                            @*@Html.Partial("LoginPartial",new HackPSU_2016.Models.LoginViewModel())*@
+                        } else {
                             <ul>
                                 <li>
                                     <a class="UserName" id="UserInfoButton">
                                         @{
                                             string userName = User.Identity.Name;
-                                            if(string.IsNullOrEmpty(userName)){
+                                            if(string.IsNullOrEmpty(userName)) {
                                                 <text>null</text>
-                                            }else{
+                                            } else {
                                                 @userName
                                             }
                                         }
                                     </a>
                                     <ul class="UserInfo">
                                         <li>
-                                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" })){
+                                            @using(Html.BeginForm("LogOff","Account",FormMethod.Post,new { id = "logoutForm",@class = "navbar-right" })) {
                                                 @Html.AntiForgeryToken()
                                             }
                                             <a href="javascript: document.getElementById('logoutForm').submit()">
@@ -92,8 +99,8 @@
                                     <a class="Icon Gear">&nbsp;0</a>
                                 </li>
                             </ul>
-                        </div>
-                    } }
+                                            } }
+                </div>
             </div>
             <div class="row SiteContentContain">
                 <div class="one columns LeftPageGutter">
@@ -109,7 +116,9 @@
         </div>
     </div>
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/foundation")
+        @Scripts.Render("~/bundles/foundation")
+        <!-- Needed five chats and stuffs -->
+        <script src="~/signalr/hubs"></script>
 
     @*Use the Scripts section to define page specific scripts*@
     @RenderSection("scripts",required: false)

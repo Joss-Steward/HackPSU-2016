@@ -30,8 +30,11 @@ namespace HackPSU_2016.Hubs
                             {
                                 MessageText = message,
                                 Sender = user,
-                                MessageTime = DateTime.Now
+                                MessageTime = DateTime.Now,
+                                UserName = user.UserName
                             });
+
+                        db.SaveChanges();
 
                         foreach(var member in group.Members.Select(m => m.User))
                         {

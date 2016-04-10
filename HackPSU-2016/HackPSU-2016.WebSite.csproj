@@ -241,6 +241,14 @@
     <Compile Include="Migrations\201604100507426_AddedConnectionsForSignalR.Designer.cs">
       <DependentUpon>201604100507426_AddedConnectionsForSignalR.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604101209518_FixedChatHistory.cs" />
+    <Compile Include="Migrations\201604101209518_FixedChatHistory.Designer.cs">
+      <DependentUpon>201604101209518_FixedChatHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604101222044_ScrewIt.cs" />
+    <Compile Include="Migrations\201604101222044_ScrewIt.Designer.cs">
+      <DependentUpon>201604101222044_ScrewIt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -378,11 +386,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Foundation.cshtml" />
     <Content Include="Views\Home\Foundation_Index.cshtml" />
-    <Content Include="Views\Profile\Create.cshtml" />
-    <Content Include="Views\Profile\Delete.cshtml" />
     <Content Include="Views\Profile\Details.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
-    <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Shared\LoginPartial.cshtml" />
     <Content Include="Views\Group\Details.cshtml" />
   </ItemGroup>
@@ -423,6 +428,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604100507426_AddedConnectionsForSignalR.resx">
       <DependentUpon>201604100507426_AddedConnectionsForSignalR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604101209518_FixedChatHistory.resx">
+      <DependentUpon>201604101209518_FixedChatHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604101222044_ScrewIt.resx">
+      <DependentUpon>201604101222044_ScrewIt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

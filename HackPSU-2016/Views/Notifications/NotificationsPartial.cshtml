@@ -1,0 +1,34 @@
+﻿
+
+@using HackPSU_2016.Models
+@using HackPSU_2016.Controllers
+@*@Model HackPSU_2016.Controllers.GetNotifications()*@
+
+@{
+//List<Notification> listNotify = new List<Notification>();
+//List<Notification> listNotify = new NotificationsController().GetNotifications();
+    @*@User.Identity.Name;*@
+    List<Notification> listNotify = new List<Notification> {
+            new Notification{Title="Something"}
+            ,new Notification{Title="Something2"}
+    };
+}
+
+
+<a id="NotificationsButton" class="Icon Bell">&nbsp;@listNotify.Count</a>
+<ul class="Notifications">
+    @{if(listNotify.Count==0) {
+            <li>
+                <a>
+                    No new notification
+                </a>
+            </li>
+        } }
+    @foreach(Notification notify in listNotify){
+    <li>
+        <a>
+            @notify.Title
+        </a>
+    </li>
+    }
+</ul>

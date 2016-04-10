@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using HackPSU_2016.Models;
 
-namespace HackPSU_2016.Inserter
+namespace HackPSU_2016.MatchFinder
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -25,7 +25,6 @@ namespace HackPSU_2016.Inserter
         public virtual DbSet<Notification> Notifications { get; set; }
         public virtual DbSet<UsersToGroups> UsersToGroups { get; set; }
         public virtual DbSet<ChatMessage> ChatMessages { get; set; }
-
-        //public System.Data.Entity.DbSet<HackPSU_2016.Models.ApplicationUser> ApplicationUsers { get; set; }
+        public virtual DbSet<Connection> Connections { get; set; }
     }
 }

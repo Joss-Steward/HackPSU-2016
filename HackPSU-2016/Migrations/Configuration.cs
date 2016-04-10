@@ -101,49 +101,20 @@ namespace HackPSU_2016.Migrations
 
             context.SaveChanges();
 
-            var j1 = context.Users.Where(u => u.UserName == "redja")
+            var user = context.Users.Where(u => u.UserName == "redja")
                 .SingleOrDefault();
-            if (j1 != null)
+            if (user != null)
             {
-                var rel = new UsersToGroups
+                var relation = new UsersToGroups
                 {
-                    User = j1,
+                    User = user,
                     Group = saucy,
                     DateApproved = DateTime.Now
                 };
 
-                context.UsersToGroups.Add(rel); // will also add comment3
+                context.UsersToGroups.Add(relation);
                 SaveChanges(context);
             }
-
-            /*
-            var groupRelation = new UsersToGroups
-            {
-                User = context.Users.Single(u => u.UserName == jared.UserName),
-                Group = context.Groups.Single(g => g.Name == saucy.Name),
-                DateApproved = null
-            };
-
-            context.UsersToGroups.Add(groupRelation);
-            saucy.Members.Add(groupRelation);
-            jared.Groups.Add(groupRelation);
-
-            /*
-            context.UsersToGroups.Add(
-                new UsersToGroups
-                {
-                    User = ian,
-                    Group = saucy,
-                    DateApproved = null
-                });
-            context.UsersToGroups.Add(
-                new UsersToGroups
-                {
-                    User = joss,
-                    Group = saucy,
-                    DateApproved = null
-                });
-            */
 
             SaveChanges(context);
         }

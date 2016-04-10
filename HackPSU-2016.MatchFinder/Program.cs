@@ -10,103 +10,80 @@ using System.Data.Entity.Validation;
 
 namespace HackPSU_2016.MatchFinder
 {
-    // To learn more about Microsoft Azure WebJobs SDK, please see http://go.microsoft.com/fwlink/?LinkID=320976
     class Program
     {
-        // Please set the following connection strings in app.config for this WebJob to run:
-        // AzureWebJobsDashboard and AzureWebJobsStorage
         static void Main()
         {
-            Console.WriteLine("Application STARTING");
+            Console.WriteLine("Starting match finding webjob...");
 
-            //var host = new JobHost();
-            //// The following code ensures that the WebJob will be running continuously
-            //host.RunAndBlock();
-            Random rand = new Random();
+            Random random = new Random();
             long groupCount = 0;
 
             while (true)
             {
+                Console.WriteLine("Generating new group");
                 using (var db = new ApplicationDbContext())
                 {
-                    var group = new Group();
-                    group.Name = "Group " + groupCount;
-
-                    Console.WriteLine("Creating New Group");
-
-                    db.Groups.Add(group);
-                    db.SaveChanges();
-                    
-                    if(group != null)
+                    var GroupUsers = new List<ApplicationUser>();
+                
+                    foreach(ApplicationUser user in db.Users.ToList())
                     {
-                        Console.WriteLine("Created group " + "Group " + groupCount);
+                        if (random.Next(0, 10) < 8) continue;
+                        GroupUsers.Add(user);
+                    }
 
-                        int usersAdded = 0;
-
-                        foreach(ApplicationUser user in db.Users.ToList())
+                    if(GroupUsers.Count > 3)
+                    {
+                        var NewGroup = new Group()
                         {
-                            if (rand.Next(0, 10) <= 7)
-                                continue;
+                            Name = "Group " + groupCount
+                        };
 
-                            Console.WriteLine("Added user {" + user.UserName + "} to group");
+                        db.Groups.Add(NewGroup);
+                        db.SaveChanges();
 
-                            if(user.Groups.Where(g => g.DateApproved == null).Count() < 10)
+                        var group = db.Groups.FirstOrDefault(g => g.Name == "Group " + groupCount);
+
+                        foreach (ApplicationUser user in GroupUsers)
+                        {
+                            try
                             {
-                                try
+                                if (group != null && user != null)
                                 {
-                                    group = db.Groups.FirstOrDefault(g => g.Name == "Group " + groupCount);
-                                    var u = db.Users.Where(un => un.UserName == user.UserName)
-                                        .SingleOrDefault();
-
-                                    if (group != null && user != null)
+                                    UsersToGroups groupRelation = new UsersToGroups
                                     {
-                                        UsersToGroups groupRelation = new UsersToGroups
-                                        {
-                                            User = user,
-                                            Group = group,
-                                            DateApproved = DateTime.Now
-                                        };
+                                        User = user,
+                                        Group = group,
+                                        DateApproved = DateTime.Now
+                                    };
 
-                                        db.UsersToGroups.Add(groupRelation);
-                                        db.SaveChanges();
-                                    }
+                                    db.UsersToGroups.Add(groupRelation);
+                                    db.SaveChanges();
 
+                                    Console.WriteLine("Added {" + user.UserName + "} to {Group " + groupCount + "}");
                                 }
-                                catch (DbEntityValidationException e)
+                            }
+                            catch (DbEntityValidationException e)
+                            {
+                                foreach (var eve in e.EntityValidationErrors)
                                 {
-                                    foreach (var eve in e.EntityValidationErrors)
+                                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                                    foreach (var ve in eve.ValidationErrors)
                                     {
-                                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                                        foreach (var ve in eve.ValidationErrors)
-                                        {
-                                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                                                ve.PropertyName, ve.ErrorMessage);
-                                        }
+                                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                            ve.PropertyName, ve.ErrorMessage);
                                     }
-                                    throw;
                                 }
-
-                                usersAdded++;
                             }
                         }
 
-                        db.SaveChanges();
-
-                        if(usersAdded == 0) {
-                            Console.WriteLine("Didn't add anyone, sleeping long time now");
-                            Thread.Sleep(10000);
-                        }
-                    } else
-                    {
-                        Console.WriteLine("Failed to create group");
+                        groupCount++;
                     }
-                    groupCount++;
-
-                    Thread.Sleep(1000);
                 }
-            }
 
+                Thread.Sleep(10000);
+            }
         }
     }
 }

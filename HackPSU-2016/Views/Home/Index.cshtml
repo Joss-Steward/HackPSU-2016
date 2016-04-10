@@ -1,4 +1,6 @@
-﻿@{
+﻿@model HackPSU_2016.Models.HomePageViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -6,53 +8,39 @@
     <div class="NavArrows Left">
         <a class="Icon LeftArrow"></a>
     </div>
-    <a href="@Url.Action("Index","Group")">
-        <div class="UserPanelContain">
-            <div class="UserPanel">
-                User info 1
+    
+    @if (Model.joinedGroups.Count != 0)
+    {
+    foreach (var g in Model.joinedGroups)
+    {
+        <a href="@Url.Action("Index", "Group", new { id = g.GroupId })">
+            <div class="UserPanelContain">
+                <div class="UserPanel">
+                    @g.Name
+                </div>
             </div>
-        </div>
-    </a>
-
-    <div class="UserPanelContain">
-        <div class="UserPanel">
-            User info 2
-        </div>
-    </div>
-
-    <div class="UserPanelContain">
-        <div class="UserPanel">
-            User info 3
-        </div>
-    </div>
-
-    <div class="UserPanelContain">
-        <div class="UserPanel">
-            User info 4
-        </div>
-    </div>
-
-    <div class="UserPanelContain">
-        <div class="UserPanel">
-            User info 5
-        </div>
-    </div>
-
-    <div class="UserPanelContain">
-        <div class="UserPanel">
-            User info 6
-        </div>
-    </div>
-
-    <div class="UserPanelContain">
-        <div class="UserPanel">
-            User info 7
-        </div>
-    </div>
+        </a>
+    }
+    } else
+    {
+        <b>Join some groups</b>
+    }
 
     <div class="NavArrows Right">
         <a class="Icon RightArrow"></a>
     </div>
 </div>
 
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+@if (Model.potentialGroups.Count != 0)
+{
+foreach (var g in Model.potentialGroups)
+{
+    <div class="row">
+        @g.Name
+    </div>
+}
+}
+else
+{
+    <b>Need potential groups to join... </b>
+}

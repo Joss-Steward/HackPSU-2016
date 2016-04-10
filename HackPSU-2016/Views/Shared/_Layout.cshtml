@@ -44,61 +44,60 @@
                 </div>*@
                 <div class="four columns UserControls">
                     @{if(!Request.IsAuthenticated){
-                        <a href="@Url.Action("Login","Account")">
-                            Login
-                        </a>
-                        <a href="@Url.Action("Register","Account")">
-                            Register
-                        </a>
-                    }else{
-                        <ul>
-                            <li>
-                                <a class="UserName" id="UserInfoButton">
-                                    @{
-                                        string userName = User.Identity.Name;
-                                        if(string.IsNullOrEmpty(userName)) {
-                                            <text>null</text>
-                                        }else{
-                                            @userName
-                                        }
-                                        }
-                                </a>
-                                <ul class="UserInfo">
-                                    <li>
-                                        @using(Html.BeginForm("LogOff","Account",FormMethod.Post,new { id = "logoutForm",@class = "navbar-right" })) {
-                                            @Html.AntiForgeryToken()
-                                        }
-                                        <a href="javascript: document.getElementById('logoutForm').submit()">
-                                            Logout
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a id="NotificationsButton" class="Icon Bell">&nbsp;3</a>
-                                <ul class="Notifications">
-                                    <li>
-                                        <a href="">
-                                            Some Notification 1
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            Some Notification 2
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            Some Notification 3
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="Icon Gear">&nbsp;0</a>
-                            </li>
-                        </ul>
-                    } }
+                            <a href="@Url.Action("Login","Account")">
+                                Login
+                            </a>
+                            <a href="@Url.Action("Register","Account")">
+                                Register
+                            </a>
+                            @*@Html.Partial("LoginPartial",new HackPSU_2016.Models.LoginViewModel())*@
+                        } else {
+                            <ul>
+                                <li>
+                                    <a class="UserName" id="UserInfoButton">
+                                        @User.Identity.Name
+                                    </a>
+                                    <ul class="UserInfo">
+                                        <li>
+                                            <a class="UserName" id="UserInfoButton" href="/Profile/Details/@User.Identity.Name">
+                                                Edit Profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            @using(Html.BeginForm("LogOff","Account",FormMethod.Post,new { id = "logoutForm",@class = "navbar-right" })) {
+                                                @Html.AntiForgeryToken()
+                                            }
+                                            <a href="javascript: document.getElementById('logoutForm').submit()">
+                                                Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a id="NotificationsButton" class="Icon Bell">&nbsp;3</a>
+                                    <ul class="Notifications">
+                                        <li>
+                                            <a href="">
+                                                Some Notification 1
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                Some Notification 2
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                Some Notification 3
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="Icon Gear">&nbsp;0</a>
+                                </li>
+                            </ul>
+                                            } }
                 </div>
             </div>
             <div class="row SiteContentContain">

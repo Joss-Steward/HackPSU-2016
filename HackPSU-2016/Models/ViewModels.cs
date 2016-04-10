@@ -10,4 +10,11 @@ namespace HackPSU_2016.Models
         public List<Group> joinedGroups;
         public List<Group> potentialGroups;
     }
+
+    public class ChatMessageViewModel
+    {
+        public DateTime Time;
+        public string Sender;
+        public string Text;
+    }
 }

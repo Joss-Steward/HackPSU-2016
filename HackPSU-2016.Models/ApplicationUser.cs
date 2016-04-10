@@ -70,6 +70,7 @@ namespace HackPSU_2016.Models
         public virtual ICollection<Game> Games { get; set; }
         public virtual ICollection<UsersToGroups> Groups { get; set; }
         public virtual ICollection<Notification> Notifications { get; set; }
+        public virtual ICollection<ChatMessage> ChatMessages { get; set; }
 
         public Skill Skill { get; set; }
         public Playstyle Playstyle { get; set; }

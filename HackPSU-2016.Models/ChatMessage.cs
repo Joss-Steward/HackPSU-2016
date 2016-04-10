@@ -14,6 +14,11 @@ namespace HackPSU_2016.Models
         public Group Group { get; set; }
 
         public string MessageText { get; set; }
+
+        /* ENTITY FRAMEWORK BEING PAIN.
+            NEED WORK NOW.
+            THIS MAKE WORK */
+        public string UserName { get; set; }
         public DateTime? MessageTime { get; set; }
     }
 }

@@ -393,6 +393,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="App_Start\Fonts\" />
     <Folder Include="Views\Notifications\" />
   </ItemGroup>
   <ItemGroup>

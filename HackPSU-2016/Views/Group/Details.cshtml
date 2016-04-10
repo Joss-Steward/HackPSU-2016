@@ -68,7 +68,7 @@
     <script>
         function FormSubmit(event){
             event.preventDefault();
-            if($('#message').val('')) {
+            if($('#message').val()) {
                 $.connection.hub.start().done(function(){
                     chat.server.sendChatMessage(@Model.GroupId, $('#message').val());
                     $('#message').val('').focus();

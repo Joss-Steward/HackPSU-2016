@@ -57,7 +57,14 @@ namespace HackPSU_2016.Models
         public ApplicationUser()
         {
             this.Games = new HashSet<Game>();
-        }
+            Sunday = new Availability();
+            Monday    = new Availability();
+            Tuesday   = new Availability();
+            Wednesday = new Availability();
+            Thursday  = new Availability();
+            Friday    = new Availability();
+            Saturday  = new Availability();
+    }
 
 
         public virtual ICollection<Game> Games { get; set; }
@@ -78,7 +85,5 @@ namespace HackPSU_2016.Models
         public Availability Thursday { get; set; }
         public Availability Friday { get; set; }
         public Availability Saturday { get; set; }
-
-
     }
 }

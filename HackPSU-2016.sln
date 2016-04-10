@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackPSU-2016.WebSite", "Hac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackPSU-2016.Models", "HackPSU-2016.Models\HackPSU-2016.Models.csproj", "{FE519147-DD1D-434E-98E2-5A8579D4B2FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackPSU-2016.Inserter", "HackPSU-2016.Inserter\HackPSU-2016.Inserter.csproj", "{26C79593-766C-4567-AB30-692BFDF2A18E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FE519147-DD1D-434E-98E2-5A8579D4B2FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE519147-DD1D-434E-98E2-5A8579D4B2FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE519147-DD1D-434E-98E2-5A8579D4B2FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26C79593-766C-4567-AB30-692BFDF2A18E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26C79593-766C-4567-AB30-692BFDF2A18E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26C79593-766C-4567-AB30-692BFDF2A18E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26C79593-766C-4567-AB30-692BFDF2A18E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

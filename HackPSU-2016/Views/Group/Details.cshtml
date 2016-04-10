@@ -20,11 +20,11 @@
 <div class="row GroupData">
     <div class="eight columns PlayerChat">
         <div class="row">
-            Chat Window
+            <h2>Chat Window</h2>
         </div>
         <div class="row ChatContain" id="chat">
             @foreach(var c in Model.ChatMessages.OrderByDescending(c => c.MessageTime).Take(10)) { 
-                <div class="row" style="color: white;">
+                <div class="row">
                     <div class="twelve columns">
                         <span></span>
                         @c.Sender.UserName : @c.MessageText
@@ -34,7 +34,7 @@
         </div>
         <div class="ChatInputContain">
             <input type="text" id="message" />
-            <input type="button" id="sendmessage" value="Send" />
+            <button id="sendmessage">Send</button>
         </div>
     </div>
     <div class="four columns PlayerList">
@@ -64,7 +64,7 @@
             chat.client.addChatMessage = function (groupid, name, message) {
                 if(groupid == @Model.GroupId) {
                     // Add the message to the page.
-                    $('#chat').append('<div class="row" style="color: white;"><div class="twelve columns"><span></span>'
+                    $('#chat').append('<div class="row"><div class="twelve columns"><span></span>'
                         + htmlEncode(name)
                         + ': ' + htmlEncode(message) + '</div></div>');
                 }

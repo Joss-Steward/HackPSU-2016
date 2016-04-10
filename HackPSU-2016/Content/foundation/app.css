@@ -262,6 +262,17 @@ body{
     color: rgba(0, 0, 0, 1);
 }
 
+
+.SiteContentContain .SiteContent button{
+    display: inline-block;
+    width: auto;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-size: 18px;
+    border: none;
+    background: #E5E5E5;
+}
+
 /* -----------------------------------------
    Home -> Index
 ----------------------------------------- */
@@ -360,11 +371,25 @@ body{
 }
 
 .GroupData .PlayerChat .ChatInputContain{
-    width: 98%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
     z-index: 10;
+}
+
+.GroupData .PlayerChat .ChatInputContain input{
+    width: 90%;
+    display: inline-block;
+    float: left;
+}
+
+.GroupData .PlayerChat .ChatInputContain button{
+    width: 10%;
+    display: inline-block;
+    float: left;
 }
 
 .GroupData .PlayerChat .ChatContain{ 
@@ -372,6 +397,7 @@ body{
     position: relative;
     overflow: hidden;
     overflow-y: scroll;
+    background: #e5e5e5;
 }
 
 .GroupData .PlayerChat .ChatContain > div:last-child{
@@ -468,7 +494,7 @@ body{
 }
 
 
-.UserForm .FormRow button{
+/*.UserForm .FormRow button{
     display: inline-block;
     width: auto;
     padding: 10px 25px;
@@ -476,8 +502,7 @@ body{
     font-size: 18px;
     border: none;
     background: #E5E5E5;
-    /*font-family: Arial, Helvetica, sans-serif;*/
-}
+}*/
 
 .UserForm .FormRow button:hover{
     font-weight: bold;

@@ -7,7 +7,7 @@ Twitter: @JossSteward
 Location: Chambersburg, Pennsylvania
 
 Your title: Chris Hersh
-Site: http://chrishersh.com
+Site: http://chrishersh.com 
 Location: Allentown, Pennsylvania
 
 /* SITE */
